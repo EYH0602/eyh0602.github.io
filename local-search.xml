@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>Constants</title>
+    <link href="/2021/06/06/Constants/"/>
+    <url>/2021/06/06/Constants/</url>
+    
+    <content type="html"><![CDATA[<h1 id="What-should-we-add-a-constant-after-getting-the-Antiderivative-of-first-order-functions"><a href="#What-should-we-add-a-constant-after-getting-the-Antiderivative-of-first-order-functions" class="headerlink" title="What should we add a constant after getting the Antiderivative of first order functions?"></a>What should we add a constant after getting the Antiderivative of first order functions?</h1><p>Few days ago, I saw this question under <a href="https://www.zhihu.com/people/likeyong">@Phenomene Bizarre</a>‘s post <a href="https://www.zhihu.com/question/54508642/answer/154155831">如何正确理解群论中的同态基本定理？</a>.I thought this different approach to explain a simple question is really interesting.So here comes this blog.</p><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>First we should clarify the question a little bit.As asked, when we try to find the antiderivative of a first order function $f$ with respect to variable $x$,$$\int f \ dx = F + c.$$why should we always add the constant $c$ at the end?</p><h2 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h2><p><strong>Definition</strong>. $C^1(\mathbb{R})$ is the set of first order continuously differentiable functions on $\mathbb{R}$.</p><h2 id="An-Algebraic-Approach"><a href="#An-Algebraic-Approach" class="headerlink" title="An Algebraic Approach"></a>An Algebraic Approach</h2><p>To talk about antiderivative, we should first understand the definition of <strong>derivative</strong>.As defined, derivative of a function in this case is epimorphism mapping from $C^1(\mathbb{R})$ to $C^0(\mathbb{R})$,$$D := \frac{d}{dx} : C^1(\mathbb{R}) \rightarrow C^0(\mathbb{R}).$$</p><p>That is, if a function $f$ nis integrable, then it must be in the image of the above function,$$f \text{ is integrable} \iff f \in \mathrm{im} D.$$</p><p>Since $D$ is em epimorphism, by the First Isomorphism Theorem,there exists an unique isomorphism $$\phi : C^1(\mathbb{R}) \big/ \ker D \rightarrow \mathrm{im}D$$where $C^1(\mathbb{R}) \big/ \ker D$ is the quotient space of $C^1(\mathbb{R})$.</p><p>Since isomorphism is bijective, there exists an inverse function of $\phi$$$\phi^{-1} : \mathrm{im}D \rightarrow C^1(\mathbb{R}) \big/ \ker D$$that maps form the image of function $D$ to the quotient space,which as we know is the <strong>antiderivative function</strong>.Then it is clear that the antiderivative of $f$, $F \in C^1(\mathbb{R}) \big/ \ker D$.</p><p>Since $\ker D$ is a normal subgroup to $C^1(\mathbb{R})$,by <a href="https://en.wikipedia.org/wiki/Quotient_group">definition of quotient group</a>,$C^1(\mathbb{R}) \big/ \ker D$ is the set of all <a href="https://en.wikipedia.org/wiki/Coset">left cosets</a>of $\ker D$ in $C^1(\mathbb{R})$.That is,$$C^1(\mathbb{R}) \big/ \ker D = \{ a + \ker D: a \in C^1(\mathbb{R}) \}.$$</p><div class="note note-secondary">            <p>Here we say it is $a + N$ because $+$ is the binary operation defined on $C^1(\mathbb{R})$.</p>          </div><p>Then what is the kernel of function $D$?By <a href="https://en.wikipedia.org/wiki/Kernel_(algebra)">definition</a>,the kernel of a morphism is the set of all elements from the domain mapped to the identity element in image.In this case, since the identity of $+$ on $\mathbb{R}$ is $0$,$$\ker D = \{a : a \in C^1(\mathbb{R}) \land a \mapsto 0 \} \subseteq \mathbb{Z}.$$</p><p>Therefore, we should add the constant when finding antiderivative or indefinite integral.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Science</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Note</tag>
+      
+      <tag>math</tag>
+      
+      <tag>algebra</tag>
+      
+      <tag>calculus</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Object Oriented Mathematics !?</title>
     <link href="/2021/03/26/ObjectMath/"/>
     <url>/2021/03/26/ObjectMath/</url>
@@ -22,11 +53,11 @@
       
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
-      
       <tag>math</tag>
       
       <tag>algebra</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -61,11 +92,11 @@
       
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
-      
       <tag>math</tag>
       
       <tag>algebra</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -100,11 +131,11 @@
       
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
-      
       <tag>math</tag>
       
       <tag>algebra</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -139,11 +170,11 @@
       
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
-      
       <tag>math</tag>
       
       <tag>algebra</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -178,11 +209,11 @@
       
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
-      
       <tag>math</tag>
       
       <tag>algebra</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
