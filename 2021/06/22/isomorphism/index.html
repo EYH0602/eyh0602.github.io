@@ -20,7 +20,7 @@
   <meta name="author" content="Yifeng He">
   <meta name="keywords" content="">
   
-  <title>Constants - EYH Site</title>
+  <title>Isomorphic of Composition - EYH Site</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Constants">
+            <span class="h2" id="subtitle" title="Isomorphic of Composition">
               
             </span>
 
@@ -253,8 +253,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-06-06 17:20" pubdate>
-        June 6, 2021 pm
+      <time datetime="2021-06-22 18:10" pubdate>
+        June 22, 2021 pm
       </time>
     </span>
   
@@ -265,7 +265,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      452 words
+      326 words
     </span>
   
 
@@ -275,7 +275,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      9
        minute
     </span>
   
@@ -313,62 +313,52 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Constants</h1>
+            <h1 style="display: none">Isomorphic of Composition</h1>
             
             <div class="markdown-body">
-              <h1 id="What-should-we-add-a-constant-after-getting-the-Antiderivative-of-first-order-functions"><a href="#What-should-we-add-a-constant-after-getting-the-Antiderivative-of-first-order-functions" class="headerlink" title="What should we add a constant after getting the Antiderivative of first order functions?"></a>What should we add a constant after getting the Antiderivative of first order functions?</h1><p>Few days ago, I saw this question under <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/likeyong">@Phenomene Bizarre</a>‘s 
-post <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/54508642/answer/154155831">如何正确理解群论中的同态基本定理？</a>.
-I thought this different approach to explain a simple question is really interesting.
-So here comes this blog.</p>
-<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>First we should clarify the question a little bit.
-As asked, when we try to find the antiderivative of a first order function $f$ with respect to variable $x$,
+              <h1 id="Isomorphic-of-Composition"><a href="#Isomorphic-of-Composition" class="headerlink" title="Isomorphic of Composition"></a>Isomorphic of Composition</h1><p>Are the composition of isomorphism still isomorphic?</p>
+<p>Symmetric is one of the most ideal appearance of all structure, including mathematics.
+In math, isomorphism provides the symmetry between different mathematical structures.</p>
+<p>Therefore, if the composition between isomorphism can keep to be isomorphic,
+we can compose morphism in arbitrary way while keeping the structure!</p>
+<p>As defined in general algebra, if two structures $A$ and $B$ isomorphic,
+there exists a function/mapping 
 $$
-\int f \ dx = F + c.
+\varphi : A \rightarrow B
 $$
-why should we always add the constant $c$ at the end?</p>
-<h2 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h2><p><strong>Definition</strong>. $C^1(\mathbb{R})$ is the set of first order continuously differentiable functions on $\mathbb{R}$.</p>
-<h2 id="An-Algebraic-Approach"><a href="#An-Algebraic-Approach" class="headerlink" title="An Algebraic Approach"></a>An Algebraic Approach</h2><p>To talk about antiderivative, we should first understand the definition of <strong>derivative</strong>.
-As defined, derivative of a function in this case is epimorphism mapping from $C^1(\mathbb{R})$ to $C^0(\mathbb{R})$,
-$$
-D := \frac{d}{dx} : C^1(\mathbb{R}) \rightarrow C^0(\mathbb{R}).
+which is bijective and keeps the structure from $A$ to $B$.</p>
+<p>As for category theory, let $\mathcal{C}_1$ and $\mathcal{C}_2$ be functors where</p>
+<p>$$
+F : \mathcal{C}_1 \rightarrow \mathcal{C}_2, \ 
+G : \mathcal{C}_2 \rightarrow \mathcal{C}_1
 $$</p>
-<p>That is, if a function $f$ nis integrable, then it must be in the image of the above function,
-$$
-f \text{ is integrable} \iff f \in \mathrm{im} D.
+<p>satisfies that</p>
+<p>$$
+FG = \mathrm{id}<em>{\mathcal{C}</em>{2}, \ 
+GF = \mathrm{id}<em>{\mathcal{C}</em>{1}
 $$</p>
-<p>Since $D$ is an epimorphism, by the First Isomorphism Theorem,
-there exists an unique isomorphism 
+<p>we say that $F$ is a isomorphism between categories, and $G$ is its inverse.</p>
+<p>We will solve the problem in two steps.</p>
+<h2 id="If-composition-of-functions-is-isomorphic-so-are-this-functions"><a href="#If-composition-of-functions-is-isomorphic-so-are-this-functions" class="headerlink" title="If composition of functions is isomorphic, so are this functions."></a>If composition of functions is isomorphic, so are this functions.</h2><p>Let
 $$
-\phi : C^1(\mathbb{R}) \big/ \ker D \rightarrow \mathrm{im}D
+A \xrightarrow{f} B \xrightarrow{g} C \xrightarrow{h} D
 $$
-where $C^1(\mathbb{R}) \big/ \ker D$ is the quotient space of $C^1(\mathbb{R})$.</p>
-<p>Since isomorphism is bijective, there exists an inverse function of $\phi$
-$$
-\phi^{-1} : \mathrm{im}D \rightarrow C^1(\mathbb{R}) \big/ \ker D
-$$
-that maps form the image of function $D$ to the quotient space,
-which as we know is the <strong>antiderivative function</strong>.
-Then it is clear that the antiderivative of $f$, $F \in C^1(\mathbb{R}) \big/ \ker D$.</p>
-<p>Since $\ker D$ is a normal subgroup to $C^1(\mathbb{R})$,
-by <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Quotient_group">definition of quotient group</a>,
-$C^1(\mathbb{R}) \big/ \ker D$ is the set of all <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Coset">left cosets</a>
-of $\ker D$ in $C^1(\mathbb{R})$.
-That is,
-$$
-C^1(\mathbb{R}) \big/ \ker D = \{ a + \ker D: a \in C^1(\mathbb{R}) \}.
-$$</p>
-<div class="note note-secondary">
-            <p>Here we say it is $a + N$ because $+$ is the binary operation defined on $C^1(\mathbb{R})$.</p>
-          </div>
-
-<p>Then what is the kernel of function $D$?
-By <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Kernel_(algebra)">definition</a>,
-the kernel of a morphism is the set of all elements from the domain mapped to the identity element in image.
-In this case, since the identity of $+$ on $\mathbb{R}$ is $0$,
-$$
-\ker D = \{a : a \in C^1(\mathbb{R}) \land a \mapsto 0 \} \subseteq \mathbb{Z}.
-$$</p>
-<p>Therefore, we should add the constant when finding antiderivative or indefinite integral.</p>
+be arbitrary morphisms between categories.
+If $A \xrightarrow{gf} C$ and $B \xrightarrow{hg} D$ are isomorphic,
+then $f$, $g$, and $h$ are all isomorphic.</p>
+<p><em>Proof</em>.
+Assume, for contraction, that
+$A \xrightarrow{gf} C$ and $B \xrightarrow{hg} D$ are isomorphisms but $g$ is not.
+Then either $gg^{-1} \neq {id}<em>{C}$ or $g^{-1}g \neq \mathrm{id}</em>{B}$</p>
+<ol>
+<li>If $gg^{-1} \neq \mathrm{id}<em>{C}$, then $f^{-1}g^{-1}gf \neq \mathrm{id}</em>{A}$.</li>
+<li>If $g^{-1}g \neq \mathrm{id}<em>{B}$, note the commutative property of natural transformation, $g^{-1}h^{-1}hg \neq \mathrm{id}</em>{B}$.</li>
+</ol>
+<p>The step to show if $f$ or $h$ are not isomorphic then there is a contradiction
+based on the commutative property of functors is similar.</p>
+<p>Thus, we reach a contraction.
+Therefore if $A \xrightarrow{gf} C$ and $B \xrightarrow{hg} D$ are isomorphic,
+then $f$, $g$, and $h$ are all isomorphic.</p>
 
             </div>
             <hr>
@@ -392,8 +382,6 @@ $$</p>
                     
                       <a class="hover-with-bg" href="/tags/algebra/">algebra</a>
                     
-                      <a class="hover-with-bg" href="/tags/calculus/">calculus</a>
-                    
                   </div>
                 
               </div>
@@ -403,18 +391,12 @@ $$</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/06/22/isomorphism/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Isomorphic of Composition</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/26/ObjectMath/">
-                        <span class="hidden-mobile">Object Oriented Mathematics !?</span>
+                      <a href="/2021/06/06/Constants/">
+                        <span class="hidden-mobile">Constants</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
