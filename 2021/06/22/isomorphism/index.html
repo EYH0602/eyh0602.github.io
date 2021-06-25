@@ -265,7 +265,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      326 words
+      331 words
     </span>
   
 
@@ -333,10 +333,11 @@ F : \mathcal{C}_1 \rightarrow \mathcal{C}_2, \
 G : \mathcal{C}_2 \rightarrow \mathcal{C}_1
 $$</p>
 <p>satisfies that</p>
-<p>$$
-FG = \mathrm{id}<em>{\mathcal{C}</em>{2}, \ 
-GF = \mathrm{id}<em>{\mathcal{C}</em>{1}
-$$</p>
+<p>$$ FG = \mathrm{id}_{\mathcal{C}_2} $$</p>
+<p>and</p>
+<p>$$ GF = \mathrm{id}_{\mathcal{C}_1}. $$</p>
+<!-- = \mathrm{id}_{\mathcal{C}}_{2}$$ -->
+
 <p>we say that $F$ is a isomorphism between categories, and $G$ is its inverse.</p>
 <p>We will solve the problem in two steps.</p>
 <h2 id="If-composition-of-functions-is-isomorphic-so-are-this-functions"><a href="#If-composition-of-functions-is-isomorphic-so-are-this-functions" class="headerlink" title="If composition of functions is isomorphic, so are this functions."></a>If composition of functions is isomorphic, so are this functions.</h2><p>Let
@@ -349,10 +350,11 @@ then $f$, $g$, and $h$ are all isomorphic.</p>
 <p><em>Proof</em>.
 Assume, for contraction, that
 $A \xrightarrow{gf} C$ and $B \xrightarrow{hg} D$ are isomorphisms but $g$ is not.
-Then either $gg^{-1} \neq {id}<em>{C}$ or $g^{-1}g \neq \mathrm{id}</em>{B}$</p>
+Then either $g g^{-1} \neq \mathrm{id}_C$ or $g^{-1}g \neq \mathrm{id}_B$.</p>
 <ol>
-<li>If $gg^{-1} \neq \mathrm{id}<em>{C}$, then $f^{-1}g^{-1}gf \neq \mathrm{id}</em>{A}$.</li>
-<li>If $g^{-1}g \neq \mathrm{id}<em>{B}$, note the commutative property of natural transformation, $g^{-1}h^{-1}hg \neq \mathrm{id}</em>{B}$.</li>
+<li>If $gg^{-1} \neq \mathrm{id}_C$, then $f^{-1}g^{-1}gf \neq \mathrm{id}_A$.</li>
+<li>If $g^{-1}g \neq \mathrm{id}_B$, note the commutative property of natural transformation,
+$g^{-1}h^{-1}hg \neq \mathrm{id}_B$.</li>
 </ol>
 <p>The step to show if $f$ or $h$ are not isomorphic then there is a contradiction
 based on the commutative property of functors is similar.</p>
