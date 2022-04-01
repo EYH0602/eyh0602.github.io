@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Relations Within the Matrix</title>
+    <link href="/2022/03/31/MatFact/"/>
+    <url>/2022/03/31/MatFact/</url>
+    
+    <content type="html"><![CDATA[<h1 id="On-Behalf-of-Matrices"><a href="#On-Behalf-of-Matrices" class="headerlink" title="On Behalf of Matrices"></a>On Behalf of Matrices</h1><p>Matrix Factorization methods are commonly used in machine learning related fields.The utilizations are various, in many different sub-fields.</p><p>The holy idea behind this is that the problems of slow computation and overfitting are huge in ML-related tasks,and if the data can be represented in a matrix,the major cause of these problems is the rank of the matrix.</p><div class="note note-primary">            <p>Note that in algebra, a matrix is a linear function (mapping).For a matrix $A \in \mathbb{R}^{m \times n}$, it has type signature$$A \in \mathbb{R}^{m \times n} : \mathbb{R}^{m \times \cdot} \rightarrow \mathbb{R}^{n \times \cdot}$$</p><p>And for any linear mapping $A$, the rank if this mapping is$$\mathrm{rank}(A) = \mathrm{dim}(\mathrm{img}(A))$$</p>          </div><p>Therefore, for a input matrix $M_1$,we want to find a matrix $M_2$ such that</p><ul><li>$M_2 \approx M_1$ and </li><li>$\mathrm{rank}(M_2) \ll \mathrm{rank}(M_1)$</li></ul><p>which is the idea of <em>low-rank approximation</em>.</p><p>That is, we want to reduce the rank as much as possible andkeep the information as complete as possible.How do we do this?</p><p>The first step is to know which information in the matrix is more important.Keeping the more important information and drop the others can achieve the above desire.As the names suggests,these values should be the eigenvectors and correlations between values in the matrix.</p><h2 id="Principle-Component-Analysis"><a href="#Principle-Component-Analysis" class="headerlink" title="Principle Component Analysis"></a>Principle Component Analysis</h2><p>PCA for short.If we have dataframes, or tables,we can find out the </p><p>From linear algebra,we can find the eigenvalues of a matrix</p><ul><li>For given matrix $A$, find the eigenvalues and eigenvectors of $A$</li><li>use the eigenvalues of $A$ to form a diagonal matrix $D$</li><li>concat the eigenvectors into one matrix $U$</li><li>reorder $D$ such that eigenvalues of $A$ are in decreasing order</li><li>reorder rows $U$ in same order as $D$</li><li>replace $U$ by taking first $s$ rows of $U$ where for given $s$</li><li>$W = UX$ is the desired matrix after dimension reduced</li></ul><p>in this case, $s$ is a parameter denoting the desired dimension.</p><div class="note note-primary">            <p>One can find that$$UAU^{-1} = D$$</p>          </div><div class="note note-primary">            <p>Also note that the given matrix $A$, if we are doing PCA on images, $A$ is the image itself.If we are doing ML on tabular data, $A$ is the covariance matrix of features in the table.</p>          </div><h2 id="Singular-Value-Decomposition"><a href="#Singular-Value-Decomposition" class="headerlink" title="Singular Value Decomposition"></a>Singular Value Decomposition</h2><p>The famous SVD.Idea behind SVD is very similar to $PCA$:Denote the original matrix with some matrix multiplication of $D$ and some other matrices,where we can use the order of eigenvalues to take first $n$ rows of these matricesto achieve <em>low-rank approximation</em>.Note that’s also why its called <em>decomposition</em>.Also, FYI that singular value is just the absolute value of eigenvalue.</p><p>In this case, the approximation for given $A$ would be$$A \approx UDV’$$which also can be written as$$A \approx WH$$where $W = UD^{0.5}$ and $H = D^{0.5}V’$.</p><p>Then the job left is to find $W$ and $H$ (well, to find $U$ and $V$).</p><p>There are different methods to find these two matrices.As doing machine learning,one clear approach is to do gradient descent.</p><p>Another notable way is Alternating Least Square, where the general idea is that</p><ul><li>random init $W$ as $W_0$</li><li>use $W_0$ to find $H_0$</li><li>use $H_0$ to find $W_1$</li><li>continue until convergence or asked to stop</li></ul><p>and the task here is to minimize $f(w, h)$ where$$f(w, h) = ||A - WH||_{F}^{2}$$with the Frobenius norm.</p><h2 id="Some-Application"><a href="#Some-Application" class="headerlink" title="Some Application"></a>Some Application</h2><p>In Recommender Systems,this methods are used for dimension reduction and matrix completion of the rating matrix.However, as its name suggested, “Matrix Factorization” methods works on all matrices.The completion of the rating matrix is not limited to these factorization method,other machine learning algorithms can also predict the values.</p><p>In Computer Vision, or other ml-related tasks, these methods has more applications.In <a href="https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html">AlexNet</a>,PCA is used as a data augmentation method to alter the intensities of RGB channels of the image.SVD is also an import part of CV, dealing with image compression and image enhancement(well, the same as dimension reduction and matrix completion since images are matrices).</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Science</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Computer Science</tag>
+      
+      <tag>Linear Algebra</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>How Did I Failed RNN</title>
     <link href="/2022/03/26/RNN/"/>
     <url>/2022/03/26/RNN/</url>
@@ -138,9 +165,9 @@
       
       <tag>HackerHub</tag>
       
-      <tag>programming</tag>
-      
       <tag>Haskell</tag>
+      
+      <tag>programming</tag>
       
       <tag>functional</tag>
       
@@ -177,9 +204,9 @@
       
       <tag>HackerHub</tag>
       
-      <tag>programming</tag>
-      
       <tag>Haskell</tag>
+      
+      <tag>programming</tag>
       
       <tag>functional</tag>
       
@@ -216,9 +243,9 @@
       
       <tag>HackerHub</tag>
       
-      <tag>programming</tag>
-      
       <tag>Haskell</tag>
+      
+      <tag>programming</tag>
       
       <tag>functional</tag>
       
@@ -255,9 +282,9 @@
       
       <tag>HackerHub</tag>
       
-      <tag>programming</tag>
-      
       <tag>Haskell</tag>
+      
+      <tag>programming</tag>
       
       <tag>functional</tag>
       
@@ -294,9 +321,9 @@
       
       <tag>HackerHub</tag>
       
-      <tag>programming</tag>
-      
       <tag>Haskell</tag>
+      
+      <tag>programming</tag>
       
       <tag>functional</tag>
       
