@@ -18,21 +18,28 @@
   <meta name="description" content="writing about interesting things.">
   <meta name="author" content="Yifeng He">
   <meta name="keywords" content="">
-  <meta name="description" content="On Behalf of MatricesMatrix Factorization methods are commonly used in machine learning related fields. The utilizations are various, in many different sub-fields. The holy idea behind this is that th">
+  <meta name="description" content="Predicting ROCK!!Cover songs played an important in the history of Rock music. Some artists keep their cover songs close to the original version, while others alter the song to a great extent. Althoug">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Relations Within the Matrix">
-<meta property="og:url" content="https://eyh0602.github.io/2022/03/31/MatFact/index.html">
+<meta property="og:title" content="Music Genre">
+<meta property="og:url" content="https://eyh0602.github.io/2022/06/12/MusicGenre/index.html">
 <meta property="og:site_name" content="EYH Site">
-<meta property="og:description" content="On Behalf of MatricesMatrix Factorization methods are commonly used in machine learning related fields. The utilizations are various, in many different sub-fields. The holy idea behind this is that th">
+<meta property="og:description" content="Predicting ROCK!!Cover songs played an important in the history of Rock music. Some artists keep their cover songs close to the original version, while others alter the song to a great extent. Althoug">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-31T07:00:00.000Z">
-<meta property="article:modified_time" content="2022-04-01T01:30:53.848Z">
+<meta property="og:image" content="https://eyh0602.github.io/images/bar2.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/saliency2.png">
+<meta property="article:published_time" content="2022-06-12T07:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-13T06:17:23.359Z">
 <meta property="article:author" content="Yifeng He">
+<meta property="article:tag" content="Music">
 <meta property="article:tag" content="Computer Science">
-<meta property="article:tag" content="Linear Algebra">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Deep Learning">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="Rock">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://eyh0602.github.io/images/bar2.png">
   
-  <title>Relations Within the Matrix - EYH Site</title>
+  <title>Music Genre - EYH Site</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -252,7 +259,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Relations Within the Matrix">
+            <span class="h2" id="subtitle" title="Music Genre">
               
             </span>
 
@@ -267,8 +274,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-03-31 00:00" pubdate>
-        March 31, 2022 am
+      <time datetime="2022-06-12 00:00" pubdate>
+        June 12, 2022 am
       </time>
     </span>
   
@@ -278,7 +285,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.3k words
+      4.4k words
     </span>
   
 
@@ -287,7 +294,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10 minute
+      14 minute
     </span>
   
 
@@ -324,97 +331,19 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Relations Within the Matrix</h1>
+            <h1 style="display: none">Music Genre</h1>
             
             <div class="markdown-body">
-              <h1 id="On-Behalf-of-Matrices"><a href="#On-Behalf-of-Matrices" class="headerlink" title="On Behalf of Matrices"></a>On Behalf of Matrices</h1><p>Matrix Factorization methods are commonly used in machine learning related fields.
-The utilizations are various, in many different sub-fields.</p>
-<p>The holy idea behind this is that the problems of slow computation and overfitting are huge in ML-related tasks,
-and if the data can be represented in a matrix,
-the major cause of these problems is the rank of the matrix.</p>
-<div class="note note-primary">
-            <p>Note that in algebra, a matrix is a linear function (mapping).For a matrix $A \in \mathbb{R}^{m \times n}$, it has type signature$$A \in \mathbb{R}^{m \times n} : \mathbb{R}^{m \times \cdot} \rightarrow \mathbb{R}^{n \times \cdot}$$</p><p>And for any linear mapping $A$, the rank if this mapping is$$\mathrm{rank}(A) = \mathrm{dim}(\mathrm{img}(A))$$</p>
-          </div>
-
-<p>Therefore, for a input matrix $M_1$,
-we want to find a matrix $M_2$ such that</p>
-<ul>
-<li>$M_2 \approx M_1$ and </li>
-<li>$\mathrm{rank}(M_2) \ll \mathrm{rank}(M_1)$</li>
-</ul>
-<p>which is the idea of <em>low-rank approximation</em>.</p>
-<p>That is, we want to reduce the rank as much as possible and
-keep the information as complete as possible.
-How do we do this?</p>
-<p>The first step is to know which information in the matrix is more important.
-Keeping the more important information and drop the others can achieve the above desire.
-As the names suggests,
-these values should be the eigenvectors and correlations between values in the matrix.</p>
-<h2 id="Principle-Component-Analysis"><a href="#Principle-Component-Analysis" class="headerlink" title="Principle Component Analysis"></a>Principle Component Analysis</h2><p>PCA for short.
-If we have dataframes, or tables,
-we can find out the </p>
-<p>From linear algebra,
-we can find the eigenvalues of a matrix</p>
-<ul>
-<li>For given matrix $A$, find the eigenvalues and eigenvectors of $A$</li>
-<li>use the eigenvalues of $A$ to form a diagonal matrix $D$</li>
-<li>concat the eigenvectors into one matrix $U$</li>
-<li>reorder $D$ such that eigenvalues of $A$ are in decreasing order</li>
-<li>reorder rows $U$ in same order as $D$</li>
-<li>replace $U$ by taking first $s$ rows of $U$ where for given $s$</li>
-<li>$W = UX$ is the desired matrix after dimension reduced</li>
-</ul>
-<p>in this case, $s$ is a parameter denoting the desired dimension.</p>
-<div class="note note-primary">
-            <p>One can find that$$UAU^{-1} = D$$</p>
-          </div>
-
-<div class="note note-primary">
-            <p>Also note that the given matrix $A$, if we are doing PCA on images, $A$ is the image itself.If we are doing ML on tabular data, $A$ is the covariance matrix of features in the table.</p>
-          </div>
-
-<h2 id="Singular-Value-Decomposition"><a href="#Singular-Value-Decomposition" class="headerlink" title="Singular Value Decomposition"></a>Singular Value Decomposition</h2><p>The famous SVD.
-Idea behind SVD is very similar to $PCA$:
-Denote the original matrix with some matrix multiplication of $D$ and some other matrices,
-where we can use the order of eigenvalues to take first $n$ rows of these matrices
-to achieve <em>low-rank approximation</em>.
-Note that’s also why its called <em>decomposition</em>.
-Also, FYI that singular value is just the absolute value of eigenvalue.</p>
-<p>In this case, the approximation for given $A$ would be
-$$
-A \approx UDV’
-$$
-which also can be written as
-$$
-A \approx WH
-$$
-where $W = UD^{0.5}$ and $H = D^{0.5}V’$.</p>
-<p>Then the job left is to find $W$ and $H$ (well, to find $U$ and $V$).</p>
-<p>There are different methods to find these two matrices.
-As doing machine learning,
-one clear approach is to do gradient descent.</p>
-<p>Another notable way is Alternating Least Square, where the general idea is that</p>
-<ul>
-<li>random init $W$ as $W_0$</li>
-<li>use $W_0$ to find $H_0$</li>
-<li>use $H_0$ to find $W_1$</li>
-<li>continue until convergence or asked to stop</li>
-</ul>
-<p>and the task here is to minimize $f(w, h)$ where
-$$
-f(w, h) = ||A - WH||_{F}^{2}
-$$
-with the Frobenius norm.</p>
-<h2 id="Some-Application"><a href="#Some-Application" class="headerlink" title="Some Application"></a>Some Application</h2><p>In Recommender Systems,
-this methods are used for dimension reduction and matrix completion of the rating matrix.
-However, as its name suggested, “Matrix Factorization” methods works on all matrices.
-The completion of the rating matrix is not limited to these factorization method,
-other machine learning algorithms can also predict the values.</p>
-<p>In Computer Vision, or other ml-related tasks, these methods has more applications.
-In <a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html">AlexNet</a>,
-PCA is used as a data augmentation method to alter the intensities of RGB channels of the image.
-SVD is also an import part of CV, dealing with image compression and image enhancement
-(well, the same as dimension reduction and matrix completion since images are matrices).</p>
+              <h1 id="Predicting-ROCK"><a href="#Predicting-ROCK" class="headerlink" title="Predicting ROCK!!"></a>Predicting ROCK!!</h1><p>Cover songs played an important in the history of Rock music. Some artists keep their cover songs close to the original version, while others alter the song to a great extent. Although some critics consider cover songs as less legitimate compared to original songs, covering a song brought out new insight and understanding of the music from a different perspective. As for Rock music, cover songs are considered a diffusion of the rock n roll rock aesthetics into other genres. High Hopes, the last song of the album The Division Bell by Pink Floyd, has been covered by artists in the various music genre. In this blog, we demonstrate and discuss the difference in the Pink Floyd version and the Nightwish cover version in terms of music and from a data science perspective.</p>
+<h2 id="Music-Comparison"><a href="#Music-Comparison" class="headerlink" title="Music Comparison"></a>Music Comparison</h2><p>Different arrangements of the performance sometimes alter the meaning of the song and often appeal to different emotions. In the song High Hopes, the different utilization and arrangement of music elements contribute greatly to the meaning of their music. In the Pink Floyd version, the song is divided into two parts by the instrumental harmony (mainly guitar solo by David Gilmour) around the third minute. It is noticeable that both parts of the song are introduced with the cooperation of the piano and a bell (the Division Bell), giving the audience a calm and comfortable feeling. But at the same time, the ringing bell also keeps reminding the audience to keep in mind something. In this case, it represents the author’s thinking about the simple and beautiful past in comparison to the mysterious and complex current. This emotion is pushed to the climax by the guitar solo after each verse, leaving an endless aftertaste at the end of the Hawaiian Steel Guitar solo (also the end of the song).</p>
+<p>Nightwish, on the other hand, replaced the piano and bell with a keyboard with synthesizers, which creates a sharper and thriller sound of the same rhythm created by the piano and the bell. Through each verse, Nightwish raises the audience’s emotion of questing and anger by guitar riff Marko Hietala’s high patch singing. Instead of sitting alone thinking about the past and current as described in David’s solo, Marko uses his voice to question the future, regardless of what the past is like. The Nightwish’s cover version is also notably faster than the Pink Floyd version, which provides more energy to the music, providing the power of their screaming to the future.</p>
+<p>Although the music from these two bands is distinct, the same lyrics were fitted well. The lyrics of High Hopes focus on describing a place in the past and the feelings of revisiting the place. The music of the Pink Floyd version expresses a conflict between the current situation and the past and draws a picture wandering between these two periods. Nightwish uses the music to show their wish for the future based on the current and past described in the lyrics. Both bands bring out different perspectives of the lyrics with their different version of music.</p>
+<h2 id="A-Comparison-Based-on-Data"><a href="#A-Comparison-Based-on-Data" class="headerlink" title="A Comparison Based on Data"></a>A Comparison Based on Data</h2><p>This experiment is based on the <a target="_blank" rel="noopener" href="https://www.kaggle.com/code/andradaolteanu/work-w-audio-data-visualise-classify-recommend/">GTZAN</a> dataset, which contains a total of 1000 audio files in 10 different genres. The dataset also contains spectrogram images of every song as an image representation. In this experiment, we randomly shuffle the order of spectrograms of the songs, then divide the dataset into groups of 800, and 200 for train and test. The classifier model is composed of 5 convolution layers that can extract features from the spectrograms. We use the Cross-Entropy loss function and Adam to train the model. The model is trained for 100 epochs and get a 95% test accuracy.</p>
+<p><img src="/images/bar2.png" srcset="/img/loading.gif" lazyload alt="bar"></p>
+<p>Due to the design of model design, the feature comparison is limited to 30-second audio clips. As a result, this experiment focuses on the clips of the introduction, the refrain (chorus), and the first guitar solo (note that Nightwish did not perform the ending solo). Surprisingly, the classifier gives a high probability of blues for both versions. In particular, the prediction on the introduction of Pink Floyd’s version, the chance is similar between metal, rock, and blues. In comparison, the Nightwish version introduction is considered more like pop, blues, or metal due to the rhythm played by the keyboard. The other music samples taken from both versions are considered blues or pop music. The Saliency maps also conform with the music analysis of the first part and the above prediction that the features in the introductions are distinct, but the singing and guitar solo are similar. It is also noticeable that the lower frequency part of both versions contributes more to the genre prediction by the model, as denoted by the darker color in the Saliency maps.</p>
+<p><img src="/images/saliency2.png" srcset="/img/loading.gif" lazyload alt="saliency"></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>From both the music side and data side, we can see that although the audience considers two versions as rock and metal, the rhythm and arrangement are still close to blues. This prediction error is most likely contributed by the timber of the instruments, especially the level of distortion. To improve the results and get a clear observation, future studies may be done using larger datasets and viewing each song as a whole piece instead of taking 30-second samples.</p>
+<p>The code used to train the model and get the results is available at <a target="_blank" rel="noopener" href="https://github.com/EYH0602/MusicGenre">https://github.com/EYH0602/MusicGenre</a>.</p>
 
             </div>
             <hr>
@@ -432,9 +361,17 @@ SVD is also an import part of CV, dealing with image compression and image enhan
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
+                      <a class="hover-with-bg" href="/tags/Music/">Music</a>
+                    
                       <a class="hover-with-bg" href="/tags/Computer-Science/">Computer Science</a>
                     
-                      <a class="hover-with-bg" href="/tags/Linear-Algebra/">Linear Algebra</a>
+                      <a class="hover-with-bg" href="/tags/Machine-Learning/">Machine Learning</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Deep-Learning/">Deep Learning</a>
+                    
+                      <a class="hover-with-bg" href="/tags/NLP/">NLP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Rock/">Rock</a>
                     
                   </div>
                 
@@ -445,18 +382,12 @@ SVD is also an import part of CV, dealing with image compression and image enhan
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/06/12/MusicGenre/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Music Genre</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/26/RNN/">
-                        <span class="hidden-mobile">How Did I Failed RNN</span>
+                      <a href="/2022/03/31/MatFact/">
+                        <span class="hidden-mobile">Relations Within the Matrix</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
