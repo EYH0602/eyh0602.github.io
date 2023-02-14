@@ -18,23 +18,21 @@
   <meta name="description" content="writing about interesting things.">
   <meta name="author" content="Yifeng He">
   <meta name="keywords" content="">
-  <meta name="description" content="What should we add a constant after getting the Antiderivative of first order functions?Few days ago, I saw this question under @Phenomene Bizarre‘s post 如何正确理解群论中的同态基本定理？. I thought this different ap">
+  <meta name="description" content="What was the Frege&#x2F;Hilbert debate and what difference did it reveal between Frege and Hilbert?Frege’s viewThe Frege Hilbert debate was a controversy about the nature of geometry. Gottlob Frege viewed">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Constants">
-<meta property="og:url" content="https://eyh0602.github.io/2021/06/06/Constants/index.html">
+<meta property="og:title" content="Frege-Hilbert Controversy">
+<meta property="og:url" content="https://eyh0602.github.io/2023/02/12/FregeHilbertDebate/index.html">
 <meta property="og:site_name" content="EYH Site">
-<meta property="og:description" content="What should we add a constant after getting the Antiderivative of first order functions?Few days ago, I saw this question under @Phenomene Bizarre‘s post 如何正确理解群论中的同态基本定理？. I thought this different ap">
+<meta property="og:description" content="What was the Frege&#x2F;Hilbert debate and what difference did it reveal between Frege and Hilbert?Frege’s viewThe Frege Hilbert debate was a controversy about the nature of geometry. Gottlob Frege viewed">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-06-07T00:20:15.000Z">
-<meta property="article:modified_time" content="2022-03-01T17:03:20.020Z">
+<meta property="article:published_time" content="2023-02-12T23:23:36.000Z">
+<meta property="article:modified_time" content="2023-02-14T23:18:53.153Z">
 <meta property="article:author" content="Yifeng He">
+<meta property="article:tag" content="philosophy">
 <meta property="article:tag" content="math">
-<meta property="article:tag" content="Note">
-<meta property="article:tag" content="algebra">
-<meta property="article:tag" content="calculus">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>Constants - EYH Site</title>
+  <title>Frege-Hilbert Controversy - EYH Site</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -246,7 +244,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Constants">
+            <span class="h2" id="subtitle" title="Frege-Hilbert Controversy">
               
             </span>
 
@@ -261,8 +259,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-06-06 17:20" pubdate>
-        June 6, 2021 pm
+      <time datetime="2023-02-12 15:23" pubdate>
+        February 12, 2023 pm
       </time>
     </span>
   
@@ -272,7 +270,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k words
+      1.7k words
     </span>
   
 
@@ -281,7 +279,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6 minute
+      5 minute
     </span>
   
 
@@ -318,62 +316,43 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Constants</h1>
+            <h1 style="display: none">Frege-Hilbert Controversy</h1>
             
             <div class="markdown-body">
-              <h1 id="What-should-we-add-a-constant-after-getting-the-Antiderivative-of-first-order-functions"><a href="#What-should-we-add-a-constant-after-getting-the-Antiderivative-of-first-order-functions" class="headerlink" title="What should we add a constant after getting the Antiderivative of first order functions?"></a>What should we add a constant after getting the Antiderivative of first order functions?</h1><p>Few days ago, I saw this question under <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/likeyong">@Phenomene Bizarre</a>‘s
-post <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/54508642/answer/154155831">如何正确理解群论中的同态基本定理？</a>.
-I thought this different approach to explain a simple question is really interesting.
-So here comes this blog.</p>
-<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>First we should clarify the question a little bit.
-As asked, when we try to find the antiderivative of a first order function $f$ with respect to variable $x$,
-$$
-\int f \ dx = F + c.
-$$
-why should we always add the constant $c$ at the end?</p>
-<h2 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h2><p><strong>Definition</strong>. $C^1(\mathbb{R})$ is the set of first order continuously differentiable functions on $\mathbb{R}$.</p>
-<h2 id="An-Algebraic-Approach"><a href="#An-Algebraic-Approach" class="headerlink" title="An Algebraic Approach"></a>An Algebraic Approach</h2><p>To talk about antiderivative, we should first understand the definition of <strong>derivative</strong>.
-As defined, derivative of a function in this case is epimorphism mapping from $C^1(\mathbb{R})$ to $C^0(\mathbb{R})$,
-$$
-D := \frac{d}{dx} : C^1(\mathbb{R}) \rightarrow C^0(\mathbb{R}).
-$$</p>
-<p>That is, if a function $f$ nis integrable, then it must be in the image of the above function,
-$$
-f \text{ is integrable} \iff f \in \mathrm{im} D.
-$$</p>
-<p>Since $D$ is an epimorphism, by the First Isomorphism Theorem,
-there exists an unique isomorphism
-$$
-\phi : C^1(\mathbb{R}) \big/ \ker D \rightarrow \mathrm{im}D
-$$
-where $C^1(\mathbb{R}) \big/ \ker D$ is the quotient space of $C^1(\mathbb{R})$.</p>
-<p>Since isomorphism is bijective, there exists an inverse function of $\phi$
-$$
-\phi^{-1} : \mathrm{im}D \rightarrow C^1(\mathbb{R}) \big/ \ker D
-$$
-that maps form the image of function $D$ to the quotient space,
-which as we know is the <strong>antiderivative function</strong>.
-Then it is clear that the antiderivative of $f$, $F \in C^1(\mathbb{R}) \big/ \ker D$.</p>
-<p>Since $\ker D$ is a normal subgroup to $C^1(\mathbb{R})$,
-by <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Quotient_group">definition of quotient group</a>,
-$C^1(\mathbb{R}) \big/ \ker D$ is the set of all <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Coset">left cosets</a>
-of $\ker D$ in $C^1(\mathbb{R})$.
-That is,
-$$
-C^1(\mathbb{R}) \big/ \ker D = \{ a + \ker D: a \in C^1(\mathbb{R}) \}.
-$$</p>
-<div class="note note-secondary">
-            <p>Here we say it is $a + N$ because $+$ is the binary operation defined on $C^1(\mathbb{R})$.</p>
-          </div>
-
-<p>Then what is the kernel of function $D$?
-By <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Kernel_(algebra)">definition</a>,
-the kernel of a morphism is the set of all elements from the domain mapped to the identity element in image.
-In this case, since the identity of $+$ on $\mathbb{R}$ is $0$,
-$$
-\ker D = \{a : a \in C^1(\mathbb{R}) \land a \mapsto 0 \} \subseteq \mathbb{Z}.
-$$</p>
-<p>Therefore, we should add the constant when finding antiderivative or indefinite integral.</p>
+              <h1 id="What-was-the-Frege-Hilbert-debate-and-what-difference-did-it-reveal-between-Frege-and-Hilbert"><a href="#What-was-the-Frege-Hilbert-debate-and-what-difference-did-it-reveal-between-Frege-and-Hilbert" class="headerlink" title="What was the Frege/Hilbert debate and what difference did it reveal between Frege and Hilbert?"></a>What was the Frege/Hilbert debate and what difference did it reveal between Frege and Hilbert?</h1><h2 id="Frege’s-view"><a href="#Frege’s-view" class="headerlink" title="Frege’s view"></a>Frege’s view</h2><p>The Frege Hilbert debate was a controversy about the nature of geometry.
+Gottlob Frege viewed geometry as purely logical concepts.
+He believed that the definition of
+geometric objects were constructed from the intuition of space.
+Then the definitions given out the axioms,
+and sentences about geometry follow from the definitions and axioms by proof.
+Based on this believe,
+Frege argued that mathematical objects,
+such as point, line, and plane,
+existed independently of out knowledge of them.
+Thus Frege’s reasoning followed that
+definition/axioms $\rightarrow$ truth $\rightarrow$ consistency.
+This view of logicism is later challenged by Russell’s Paradox.</p>
+<h2 id="Hilbert’s-view"><a href="#Hilbert’s-view" class="headerlink" title="Hilbert’s view"></a>Hilbert’s view</h2><p>Davis Hilbert, on the other hand,
+thought that geometry starts from axioms
+which implicitly define the things that satisfies them.
+Sentences then follows from axioms.
+Based on this view,
+Hilbert argued that mathematical objects and truths are constructed by mathematicians
+and they were ultimately dependent on our ability to manipulate and reason about them.
+In other words, whatever satisfies the axioms are mathematical objects,
+and they mean whatever the axioms says they mean.
+Therefore, axioms serves as schema for concepts,
+and mathematical objects has variable domains,
+or to say they have no fixed meaning.
+Hilbert’s view of geometry follows
+consistency of axioms $\rightarrow$ truth $\rightarrow$ existence,
+which implies that consistency of axioms is the foundation of mathematics.
+Consistency of axioms system is later proved not exists by Godel’s inconsistency theorem.</p>
+<p>This debate revealed fundamental difference between the two view of mathematics
+regarding the nature of mathematical truth
+and the role of logic and intuition in mathematics.
+These two different views is later described as Realism and Formalism,
+also described the relationship between mathematics and human.</p>
 
             </div>
             <hr>
@@ -383,7 +362,7 @@ $$</p>
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Science/">Science</a>
+                      <a class="hover-with-bg" href="/categories/Philosophy/">Philosophy</a>
                     
                   </div>
                 
@@ -391,13 +370,9 @@ $$</p>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
+                      <a class="hover-with-bg" href="/tags/philosophy/">philosophy</a>
+                    
                       <a class="hover-with-bg" href="/tags/math/">math</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Note/">Note</a>
-                    
-                      <a class="hover-with-bg" href="/tags/algebra/">algebra</a>
-                    
-                      <a class="hover-with-bg" href="/tags/calculus/">calculus</a>
                     
                   </div>
                 
@@ -408,9 +383,9 @@ $$</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/06/22/isomorphism/">
+                      <a href="/2023/02/14/DedekindStructuralism/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Isomorphic of Composition</span>
+                        <span class="hidden-mobile">Dedekind's Structuralist View of Natural Numbers</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -418,8 +393,8 @@ $$</p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/26/ObjectMath/">
-                        <span class="hidden-mobile">Object Oriented Mathematics !?</span>
+                      <a href="/2023/02/09/GodelHilbert/">
+                        <span class="hidden-mobile">Hilbert's Program and Godel's Inconsistency Theorem</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

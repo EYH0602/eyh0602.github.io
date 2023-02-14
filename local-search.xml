@@ -4,6 +4,87 @@
   
   
   <entry>
+    <title>Dedekind&#39;s Structuralist View of Natural Numbers</title>
+    <link href="/2023/02/14/DedekindStructuralism/"/>
+    <url>/2023/02/14/DedekindStructuralism/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Connect-Dedekind’s-structuralist-view-of-natural-numbers-to-the-Hilbert-and-Bernays-quotes"><a href="#Connect-Dedekind’s-structuralist-view-of-natural-numbers-to-the-Hilbert-and-Bernays-quotes" class="headerlink" title="Connect Dedekind’s structuralist view of natural numbers to the Hilbert and Bernays quotes"></a>Connect Dedekind’s structuralist view of natural numbers to the Hilbert and Bernays quotes</h1><blockquote><p>Hilbert: We think of … points, straight lines, and plans as having certain mutual relations, whichwe indicate by means of such works as “are situated”, “between”, “parallel”, “congruent”,“continuous”, etc. The complete and exact description of these relations flows as a consequenceof the axioms of geometry.</p><p>Bernays: A main feature of Hilbert’s axiomatization of geometry is that the axiomaticmethod is presented and practiced in the spirit of the abstract conception of axiomaticsthat arose at the end of the nineteenth century and which has been generally adopted inmodern mathematics. It consists in abstracting from the intuitive meaning of the terms forthe kinds of primitive objects (individuals) and for the fundamental relations and inunderstanding the assertions (theorems) of the axiomatized theory in a hypothetical sense,that is, as holding true for any interpretation or determination of the kinds of individualsand of the fundamental relations for which the axioms are satisfied. Thus, an axiomsystem is regarded not as a system of statements about a subject matter but as a system ofconditions for what might be called a relational structure.-&gt; a theory gives a relational structure</p></blockquote><h2 id="Dedekind’s-view"><a href="#Dedekind’s-view" class="headerlink" title="Dedekind’s view"></a>Dedekind’s view</h2><p>Dedekind’s structuralist view of natural numbers is a theory thatnatural numbers should be defined as a system in terms of their properties and relationshipsas said out in the Peano axioms $P^2A$.In fact, for Dedekind, such a system is not limited to ${1, 2, 3, \ldots}$,it is whatever satisfies axioms, for example</p><ul><li>${0, 1, 2, \ldots}$,</li><li>${ \emptyset, {\emptyset}, , \ldots }$,</li><li>${\lambda f. \lambda x.x, \lambda f. \lambda x.fx, \lambda f. \lambda x.f(fx), \ldots}$,</li></ul><p>or any $\omega$-sequence satisfies the axioms are natural numbers.I will describe the similarities between Dedekind’s structuralist view of natural numbers to the Hilbert and Bernays quotes,then conclude with some difference between Hilbert’s view and Dedekind’s view.</p><h2 id="Variable-Domain"><a href="#Variable-Domain" class="headerlink" title="Variable Domain"></a>Variable Domain</h2><p>For Hilbert, from his quote listed, geometry objectslike points, lines, and planes are defined by the relations between them,such as “are situated”, “between”, “parallel”, “congruent”, “continuous”, etc.These are all relations set by the axioms.In other words, we implicitly defines the objects in virtual of relations that are given by axioms.This view gives the notion of *variable domain”.That is, points, lines, planes can be anything,even chairs, tables, coffee mugs,as long as they satisfies the relations given the axioms.In comparison to Dedekind’s view of natural numbers,Dedekind believed that any system satisfies $P^2A$ is a system of natural numbers.There two views from Hilbert and Dedekind ares just as described in Bernays quote“an axiom system is regarded not as a system of statements about a subject matterbut as a system of conditions for what might be called a relational structure.”</p><p>In conclusion to Hilbert’s view of geometry and Dedekind’s view of natural numbersis that whether the axioms is <em>categorical</em>.That is, all the systems that satisfies the axioms are equivalent up to isomorphism.Although similar, there is still a different between these two views.Hilbert believed that axioms define <em>structure</em>,whereas Dedekind believed that axioms define <em>systems that have a structure</em>.Other than this difference,the same central idea is that an object is defined solely un terms of its relations,which is (sort of) prove by the Yoneda Lemma.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Philosophy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>philosophy</tag>
+      
+      <tag>math</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Frege-Hilbert Controversy</title>
+    <link href="/2023/02/12/FregeHilbertDebate/"/>
+    <url>/2023/02/12/FregeHilbertDebate/</url>
+    
+    <content type="html"><![CDATA[<h1 id="What-was-the-Frege-Hilbert-debate-and-what-difference-did-it-reveal-between-Frege-and-Hilbert"><a href="#What-was-the-Frege-Hilbert-debate-and-what-difference-did-it-reveal-between-Frege-and-Hilbert" class="headerlink" title="What was the Frege/Hilbert debate and what difference did it reveal between Frege and Hilbert?"></a>What was the Frege/Hilbert debate and what difference did it reveal between Frege and Hilbert?</h1><h2 id="Frege’s-view"><a href="#Frege’s-view" class="headerlink" title="Frege’s view"></a>Frege’s view</h2><p>The Frege Hilbert debate was a controversy about the nature of geometry.Gottlob Frege viewed geometry as purely logical concepts.He believed that the definition ofgeometric objects were constructed from the intuition of space.Then the definitions given out the axioms,and sentences about geometry follow from the definitions and axioms by proof.Based on this believe,Frege argued that mathematical objects,such as point, line, and plane,existed independently of out knowledge of them.Thus Frege’s reasoning followed thatdefinition/axioms $\rightarrow$ truth $\rightarrow$ consistency.This view of logicism is later challenged by Russell’s Paradox.</p><h2 id="Hilbert’s-view"><a href="#Hilbert’s-view" class="headerlink" title="Hilbert’s view"></a>Hilbert’s view</h2><p>Davis Hilbert, on the other hand,thought that geometry starts from axiomswhich implicitly define the things that satisfies them.Sentences then follows from axioms.Based on this view,Hilbert argued that mathematical objects and truths are constructed by mathematiciansand they were ultimately dependent on our ability to manipulate and reason about them.In other words, whatever satisfies the axioms are mathematical objects,and they mean whatever the axioms says they mean.Therefore, axioms serves as schema for concepts,and mathematical objects has variable domains,or to say they have no fixed meaning.Hilbert’s view of geometry followsconsistency of axioms $\rightarrow$ truth $\rightarrow$ existence,which implies that consistency of axioms is the foundation of mathematics.Consistency of axioms system is later proved not exists by Godel’s inconsistency theorem.</p><p>This debate revealed fundamental difference between the two view of mathematicsregarding the nature of mathematical truthand the role of logic and intuition in mathematics.These two different views is later described as Realism and Formalism,also described the relationship between mathematics and human.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Philosophy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>philosophy</tag>
+      
+      <tag>math</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hilbert&#39;s Program and Godel&#39;s Inconsistency Theorem</title>
+    <link href="/2023/02/09/GodelHilbert/"/>
+    <url>/2023/02/09/GodelHilbert/</url>
+    
+    <content type="html"><![CDATA[<h1 id="What-are-Godel’s-Theorem-and-how-did-they-collapse-Hilbert’s-program"><a href="#What-are-Godel’s-Theorem-and-how-did-they-collapse-Hilbert’s-program" class="headerlink" title="What are Godel’s Theorem and how did they collapse Hilbert’s program?"></a>What are Godel’s Theorem and how did they collapse Hilbert’s program?</h1><p>Hilbert’s program is a way to show that an axioms system is both consistent and complete.Godel’s incompleteness theorems has two parts:</p><ol><li>no consistent system of axioms whose theorem are effective that can prove all the truth of arithmetic;</li><li>any such system cannot prove its own consistency.The second theorem proves that Hilbert’s program was not achievable and mathematics is inherently incomplete.After demonstrating the idea of Hilbert’s program and how Godel’s Theorem undermines it,I will conclude with some way to circumvent the limitation of Godel’s Theorem.</li></ol><h2 id="Hilbert’s-Program"><a href="#Hilbert’s-Program" class="headerlink" title="Hilbert’s Program"></a>Hilbert’s Program</h2><p>Hilbert, who sometimes be interpreted as a formalist,aimed to show that geometry is founded by its axioms.To achieve this, we need show that the axiom system is both consistent and complete by proof in logic.This goal of proving is known as Hilbert’s program.To Hilbert, axioms are not truth but scheme for talking about axioms.For him, consistency implies existence and truth.% notion of consistencyHilbert first shows that geometry is consistentsince it can be interpreted by real numbers.In other words, geometry is consistency in relative to analysis.Therefore, the axioms of geometry is satisfied by the theory of analysis.The way of using another system to proof the consistency of a system is called a <em>relative consistency proof</em>.However, we then need to show the consistency of analysis.The question becomes to deduce the whole mathematics to a finite set of axioms which is consistent and complete,then use this set of axioms to give a <em>absolute consistency proof</em>.The Second Incompleteness Theorem states that such a axioms system does not exist,which completely undermines the Hilbert’s program.</p><h2 id="proof-cannot-capture-truth"><a href="#proof-cannot-capture-truth" class="headerlink" title="proof cannot capture truth"></a>proof cannot capture truth</h2><p>Although Godel’s Incompleteness Theorem shows that none axiom system can shows its own consistency,it only deny the existence of <em>absolute consistency proof</em> but not <em>relative consistency proof</em>.Upon assuming the correctness of a axioms system,we can still deduce further theorem based on the assumptions.For example, upon the Peano Axioms we can build the theory of real analysis.This idea is akin to As-ifism wherewe take hypothesis <u>as if</u> they were true.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Philosophy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>philosophy</tag>
+      
+      <tag>math</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Kant&#39;s View of Concepts</title>
     <link href="/2023/02/05/concepts/"/>
     <url>/2023/02/05/concepts/</url>
@@ -20,9 +101,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -47,9 +128,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -74,9 +155,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -321,9 +402,9 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
+      
+      <tag>Note</tag>
       
       <tag>algebra</tag>
       
@@ -350,9 +431,9 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
+      
+      <tag>Note</tag>
       
       <tag>algebra</tag>
       
@@ -381,17 +462,17 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
       
-      <tag>algebra</tag>
+      <tag>Note</tag>
       
       <tag>HackerHub</tag>
       
-      <tag>programming</tag>
+      <tag>algebra</tag>
       
       <tag>Haskell</tag>
+      
+      <tag>programming</tag>
       
       <tag>functional</tag>
       
@@ -420,17 +501,17 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
       
-      <tag>algebra</tag>
+      <tag>Note</tag>
       
       <tag>HackerHub</tag>
       
-      <tag>programming</tag>
+      <tag>algebra</tag>
       
       <tag>Haskell</tag>
+      
+      <tag>programming</tag>
       
       <tag>functional</tag>
       
@@ -459,17 +540,17 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
       
-      <tag>algebra</tag>
+      <tag>Note</tag>
       
       <tag>HackerHub</tag>
       
-      <tag>programming</tag>
+      <tag>algebra</tag>
       
       <tag>Haskell</tag>
+      
+      <tag>programming</tag>
       
       <tag>functional</tag>
       
@@ -498,17 +579,17 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
       
-      <tag>algebra</tag>
+      <tag>Note</tag>
       
       <tag>HackerHub</tag>
       
-      <tag>programming</tag>
+      <tag>algebra</tag>
       
       <tag>Haskell</tag>
+      
+      <tag>programming</tag>
       
       <tag>functional</tag>
       
@@ -537,17 +618,17 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
       
-      <tag>algebra</tag>
+      <tag>Note</tag>
       
       <tag>HackerHub</tag>
       
-      <tag>programming</tag>
+      <tag>algebra</tag>
       
       <tag>Haskell</tag>
+      
+      <tag>programming</tag>
       
       <tag>functional</tag>
       
@@ -599,9 +680,9 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
+      
+      <tag>Note</tag>
       
       <tag>algebra</tag>
       
@@ -808,11 +889,11 @@
     
     <tags>
       
+      <tag>Ideology</tag>
+      
       <tag>Music</tag>
       
       <tag>Hip-hop</tag>
-      
-      <tag>Ideology</tag>
       
       <tag>Musical</tag>
       
