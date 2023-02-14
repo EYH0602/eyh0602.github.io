@@ -8,7 +8,7 @@
     <link href="/2023/02/14/DedekindStructuralism/"/>
     <url>/2023/02/14/DedekindStructuralism/</url>
     
-    <content type="html"><![CDATA[<h1 id="Connect-Dedekind’s-structuralist-view-of-natural-numbers-to-the-Hilbert-and-Bernays-quotes"><a href="#Connect-Dedekind’s-structuralist-view-of-natural-numbers-to-the-Hilbert-and-Bernays-quotes" class="headerlink" title="Connect Dedekind’s structuralist view of natural numbers to the Hilbert and Bernays quotes"></a>Connect Dedekind’s structuralist view of natural numbers to the Hilbert and Bernays quotes</h1><blockquote><p>Hilbert: We think of … points, straight lines, and plans as having certain mutual relations, whichwe indicate by means of such works as “are situated”, “between”, “parallel”, “congruent”,“continuous”, etc. The complete and exact description of these relations flows as a consequenceof the axioms of geometry.</p><p>Bernays: A main feature of Hilbert’s axiomatization of geometry is that the axiomaticmethod is presented and practiced in the spirit of the abstract conception of axiomaticsthat arose at the end of the nineteenth century and which has been generally adopted inmodern mathematics. It consists in abstracting from the intuitive meaning of the terms forthe kinds of primitive objects (individuals) and for the fundamental relations and inunderstanding the assertions (theorems) of the axiomatized theory in a hypothetical sense,that is, as holding true for any interpretation or determination of the kinds of individualsand of the fundamental relations for which the axioms are satisfied. Thus, an axiomsystem is regarded not as a system of statements about a subject matter but as a system ofconditions for what might be called a relational structure.-&gt; a theory gives a relational structure</p></blockquote><h2 id="Dedekind’s-view"><a href="#Dedekind’s-view" class="headerlink" title="Dedekind’s view"></a>Dedekind’s view</h2><p>Dedekind’s structuralist view of natural numbers is a theory thatnatural numbers should be defined as a system in terms of their properties and relationshipsas said out in the Peano axioms $P^2A$.In fact, for Dedekind, such a system is not limited to ${1, 2, 3, \ldots}$,it is whatever satisfies axioms, for example</p><ul><li>${0, 1, 2, \ldots}$,</li><li>${ \emptyset, {\emptyset}, , \ldots }$,</li><li>${\lambda f. \lambda x.x, \lambda f. \lambda x.fx, \lambda f. \lambda x.f(fx), \ldots}$,</li></ul><p>or any $\omega$-sequence satisfies the axioms are natural numbers.I will describe the similarities between Dedekind’s structuralist view of natural numbers to the Hilbert and Bernays quotes,then conclude with some difference between Hilbert’s view and Dedekind’s view.</p><h2 id="Variable-Domain"><a href="#Variable-Domain" class="headerlink" title="Variable Domain"></a>Variable Domain</h2><p>For Hilbert, from his quote listed, geometry objectslike points, lines, and planes are defined by the relations between them,such as “are situated”, “between”, “parallel”, “congruent”, “continuous”, etc.These are all relations set by the axioms.In other words, we implicitly defines the objects in virtual of relations that are given by axioms.This view gives the notion of *variable domain”.That is, points, lines, planes can be anything,even chairs, tables, coffee mugs,as long as they satisfies the relations given the axioms.In comparison to Dedekind’s view of natural numbers,Dedekind believed that any system satisfies $P^2A$ is a system of natural numbers.There two views from Hilbert and Dedekind ares just as described in Bernays quote“an axiom system is regarded not as a system of statements about a subject matterbut as a system of conditions for what might be called a relational structure.”</p><p>In conclusion to Hilbert’s view of geometry and Dedekind’s view of natural numbersis that whether the axioms is <em>categorical</em>.That is, all the systems that satisfies the axioms are equivalent up to isomorphism.Although similar, there is still a different between these two views.Hilbert believed that axioms define <em>structure</em>,whereas Dedekind believed that axioms define <em>systems that have a structure</em>.Other than this difference,the same central idea is that an object is defined solely un terms of its relations,which is (sort of) prove by the Yoneda Lemma.</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Connect-Dedekind’s-structuralist-view-of-natural-numbers-to-the-Hilbert-and-Bernays-quotes"><a href="#Connect-Dedekind’s-structuralist-view-of-natural-numbers-to-the-Hilbert-and-Bernays-quotes" class="headerlink" title="Connect Dedekind’s structuralist view of natural numbers to the Hilbert and Bernays quotes"></a>Connect Dedekind’s structuralist view of natural numbers to the Hilbert and Bernays quotes</h1><blockquote><p>Hilbert: We think of … points, straight lines, and plans as having certain mutual relations, whichwe indicate by means of such works as “are situated”, “between”, “parallel”, “congruent”,“continuous”, etc. The complete and exact description of these relations flows as a consequenceof the axioms of geometry.</p><p>Bernays: A main feature of Hilbert’s axiomatization of geometry is that the axiomaticmethod is presented and practiced in the spirit of the abstract conception of axiomaticsthat arose at the end of the nineteenth century and which has been generally adopted inmodern mathematics. It consists in abstracting from the intuitive meaning of the terms forthe kinds of primitive objects (individuals) and for the fundamental relations and inunderstanding the assertions (theorems) of the axiomatized theory in a hypothetical sense,that is, as holding true for any interpretation or determination of the kinds of individualsand of the fundamental relations for which the axioms are satisfied. Thus, an axiomsystem is regarded not as a system of statements about a subject matter but as a system ofconditions for what might be called a relational structure.-&gt; a theory gives a relational structure</p></blockquote><h2 id="Dedekind’s-view"><a href="#Dedekind’s-view" class="headerlink" title="Dedekind’s view"></a>Dedekind’s view</h2><p>Dedekind’s structuralist view of natural numbers is a theory thatnatural numbers should be defined as a system in terms of their properties and relationshipsas said out in the Peano axioms $P^2A$.In fact, for Dedekind, such a system is not limited to ${1, 2, 3, \ldots}$,it is whatever satisfies axioms, for example</p><ul><li>${0, 1, 2, \ldots}$,</li><li>${ \emptyset, \{\emptyset\}, \{\{\emptyset\}\}, \ldots }$,</li><li>${\lambda f. \lambda x.x, \lambda f. \lambda x.fx, \lambda f. \lambda x.f(fx), \ldots}$,</li></ul><p>or any $\omega$-sequence satisfies the axioms are natural numbers.I will describe the similarities between Dedekind’s structuralist view of natural numbers to the Hilbert and Bernays quotes,then conclude with some difference between Hilbert’s view and Dedekind’s view.</p><h2 id="Variable-Domain"><a href="#Variable-Domain" class="headerlink" title="Variable Domain"></a>Variable Domain</h2><p>For Hilbert, from his quote listed, geometry objectslike points, lines, and planes are defined by the relations between them,such as “are situated”, “between”, “parallel”, “congruent”, “continuous”, etc.These are all relations set by the axioms.In other words, we implicitly defines the objects in virtual of relations that are given by axioms.This view gives the notion of *variable domain”.That is, points, lines, planes can be anything,even chairs, tables, coffee mugs,as long as they satisfies the relations given the axioms.In comparison to Dedekind’s view of natural numbers,Dedekind believed that any system satisfies $P^2A$ is a system of natural numbers.There two views from Hilbert and Dedekind ares just as described in Bernays quote“an axiom system is regarded not as a system of statements about a subject matterbut as a system of conditions for what might be called a relational structure.”</p><p>In conclusion to Hilbert’s view of geometry and Dedekind’s view of natural numbersis that whether the axioms is <em>categorical</em>.That is, all the systems that satisfies the axioms are equivalent up to isomorphism.Although similar, there is still a different between these two views.Hilbert believed that axioms define <em>structure</em>,whereas Dedekind believed that axioms define <em>systems that have a structure</em>.Other than this difference,the same central idea is that an object is defined solely un terms of its relations,which is (sort of) prove by the Yoneda Lemma.</p>]]></content>
     
     
     <categories>
@@ -20,9 +20,9 @@
     
     <tags>
       
-      <tag>philosophy</tag>
-      
       <tag>math</tag>
+      
+      <tag>philosophy</tag>
       
     </tags>
     
@@ -47,9 +47,9 @@
     
     <tags>
       
-      <tag>philosophy</tag>
-      
       <tag>math</tag>
+      
+      <tag>philosophy</tag>
       
     </tags>
     
@@ -74,9 +74,9 @@
     
     <tags>
       
-      <tag>philosophy</tag>
-      
       <tag>math</tag>
+      
+      <tag>philosophy</tag>
       
     </tags>
     
@@ -101,9 +101,9 @@
     
     <tags>
       
-      <tag>philosophy</tag>
-      
       <tag>math</tag>
+      
+      <tag>philosophy</tag>
       
     </tags>
     
@@ -128,9 +128,9 @@
     
     <tags>
       
-      <tag>philosophy</tag>
-      
       <tag>math</tag>
+      
+      <tag>philosophy</tag>
       
     </tags>
     
@@ -155,9 +155,9 @@
     
     <tags>
       
-      <tag>philosophy</tag>
-      
       <tag>math</tag>
+      
+      <tag>philosophy</tag>
       
     </tags>
     
@@ -402,9 +402,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>Note</tag>
+      
+      <tag>math</tag>
       
       <tag>algebra</tag>
       
@@ -431,9 +431,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>Note</tag>
+      
+      <tag>math</tag>
       
       <tag>algebra</tag>
       
@@ -462,13 +462,13 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
+      <tag>math</tag>
       
       <tag>algebra</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -501,13 +501,13 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
+      <tag>math</tag>
       
       <tag>algebra</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -540,13 +540,13 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
+      <tag>math</tag>
       
       <tag>algebra</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -579,13 +579,13 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
+      <tag>math</tag>
       
       <tag>algebra</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -618,13 +618,13 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
+      <tag>math</tag>
       
       <tag>algebra</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -680,9 +680,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>Note</tag>
+      
+      <tag>math</tag>
       
       <tag>algebra</tag>
       
