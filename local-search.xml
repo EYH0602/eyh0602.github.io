@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Mathematical Realism</title>
+    <link href="/2023/02/19/mathreal/"/>
+    <url>/2023/02/19/mathreal/</url>
+    
+    <content type="html"><![CDATA[<h1 id="What-is-mathematical-realism-and-what-problems-does-it-face"><a href="#What-is-mathematical-realism-and-what-problems-does-it-face" class="headerlink" title="What is mathematical realism and what problems does it face?"></a>What is mathematical realism and what problems does it face?</h1><p>Mathematical realism is a philosophy view that believes mathematical objects,such as numbers, sets, functions, groups, ringsexists independent of us,the way they are in mathematical realm fixes truth,and we came to know those objects directly or indirectly through some experiments.That means that mathematical objects were discovered, rather than invented, and their properties are independent of our beliefs or attitudes towards them.There are a few problems it faces,two of them are the problem of epistemic access and the problem of ontology.</p><h2 id="Problem-of-Ontology-and-Epistemic-Access"><a href="#Problem-of-Ontology-and-Epistemic-Access" class="headerlink" title="Problem of Ontology and Epistemic Access"></a>Problem of Ontology and Epistemic Access</h2><p>These two questions we are going to discuss are related tothe existence of mathematical objects and its relationship with us.The problem with <em>ontology</em> is the question ofwhat kinds of objects exist in the mathematical domain, and how we can determine their properties and relations.In other words, what object is considered mathematical object?For example, is semi-groups considered mathematical object or a collection of mathematical objects that have associative binary operator defined?</p><figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Semigroup</span> a <span class="hljs-keyword">where</span></span> <span class="hljs-comment">-- associative binary operator</span><br>  (&lt;&gt;) :: a -&gt; a -&gt; a <span class="hljs-comment">-- a &lt;&gt; (b &lt;&gt; c) == (a &lt;&gt; b) &lt;&gt; c</span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Semigroup</span> a =&gt; <span class="hljs-type">Monoid</span> a <span class="hljs-keyword">where</span></span> <span class="hljs-comment">-- with identity element</span><br>  mempty :: a <span class="hljs-comment">-- a &lt;&gt; mempty == a</span><br></code></pre></div></td></tr></table></figure><p>The same idea also apply to other structures like monoid, group, rings, etc.</p><p>In addition to the problem of <em>ontology</em>,the problem with <em>epistemic access</em> mainly states thatif mathematical objects exists independently of us,how do we have knowledge about them?When viewing mathematical objects as abstract objects,we cannot gain knowledge or experience of them directly.</p><h2 id="Mathematical-Nominalism"><a href="#Mathematical-Nominalism" class="headerlink" title="Mathematical Nominalism"></a>Mathematical Nominalism</h2><p>Since there are problems with mathematical realism,mathematical nominalism is an alternative view to avoid the problem of “independent of us”.On this position, mathematical objects are true only in a conventional or linguistic sense,or they are just names given by mathematicians.Since objects are just names in the language,there is no problem with access as how we defined the language.However, mathematical nominalism faces problems likethe reliability of mathematical objects and the usefulness of mathematicalsince objects now are just names given in a language.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Philosophy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>math</tag>
+      
+      <tag>philosophy</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Dedekind&#39;s Structuralist View of Natural Numbers</title>
     <link href="/2023/02/14/DedekindStructuralism/"/>
     <url>/2023/02/14/DedekindStructuralism/</url>
