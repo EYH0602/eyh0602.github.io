@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Mathematical Structuralism</title>
+    <link href="/2023/02/26/mathematical-structuralism/"/>
+    <url>/2023/02/26/mathematical-structuralism/</url>
+    
+    <content type="html"><![CDATA[<h1 id="The-difference-between-in-re-and-ante-rem-mathematical-structuralism"><a href="#The-difference-between-in-re-and-ante-rem-mathematical-structuralism" class="headerlink" title="The difference between in re and ante rem mathematical structuralism."></a>The difference between <em>in re</em> and <em>ante rem</em> mathematical structuralism.</h1><h2 id="Priority-of-Structure-to-Object"><a href="#Priority-of-Structure-to-Object" class="headerlink" title="Priority of Structure to Object"></a>Priority of Structure to Object</h2><p>Mathematical structuralism is a view that takes structural as first-class citizens in philosophy.Mathematical structuralism takes account of axioms,that says that axioms define structure, or they define systems that have a structure.In this view, an object is just a position in such a structure or a system that has a structure.There are two position on mathematical structuralism: <em>in re</em> and <em>ante rem</em>.These two position are about the <em>priority</em> of structure to object in mathematics.There are three sense of <em>priority</em>:</p><ol><li>ontological sense: structures are ontologically prior to objects (<em>ante rem</em>),</li><li>semantic sense: <em>systems that have a structure</em> are semantically prior to objects (<em>in re</em>),</li><li>methodological sense: system that have a structure are methodologically prior to object (<em>in re</em>).</li></ol><h2 id="Illustrating-the-Difference-between-In-Re-and-Ante-Rem"><a href="#Illustrating-the-Difference-between-In-Re-and-Ante-Rem" class="headerlink" title="Illustrating the Difference between In Re and Ante Rem"></a>Illustrating the Difference between In Re and Ante Rem</h2><p>In general, <em>ante rem</em> believes that objects comes before structure,whereas <em>in re</em> believes that objects are in the structure.To further illustrate the difference between <em>in re</em> and <em>ante rem</em>,we can take the sentence “The rose is red” as an example.For <em>in re</em>, the sentence would be interpreted asredness is in the rose, we come to know red by individuals of roses.This shows the idea of universal in the particular and there are only particulars.But for <em>ante rem</em>, it would bethe rose is red because it exemplifies/instantiates Redness,which takes universal over and above the particular and types over and above tokens.</p><h2 id="Other-Views-on-Priority-of-Structures-in-Mathematics"><a href="#Other-Views-on-Priority-of-Structures-in-Mathematics" class="headerlink" title="Other Views on Priority of Structures in Mathematics"></a>Other Views on Priority of Structures in Mathematics</h2><p>The representatives of <em>in re</em> and <em>ante rem</em> view of <em>priority</em> are Hellman and Shapiro.Although these are the two main approaches to understand the semantic sense and ontological sense of priority of structures in mathematics,there still exists other views.In stead of viewing background theories are taken to giveactual structure or possible system.As-ifism act as if our axioms are true and this allows us to make methodological use of objects for the purpose of solving problems.Therefore, as-ifism use category theory as a background language to talk about systems that have a structure.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Philosophy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>philosophy</tag>
+      
+      <tag>math</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Mathematical Realism</title>
     <link href="/2023/02/19/mathreal/"/>
     <url>/2023/02/19/mathreal/</url>
@@ -20,9 +47,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -47,9 +74,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -74,9 +101,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -101,9 +128,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -128,9 +155,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -155,9 +182,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -182,9 +209,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -491,11 +518,11 @@
       
       <tag>Note</tag>
       
+      <tag>HackerHub</tag>
+      
       <tag>math</tag>
       
       <tag>algebra</tag>
-      
-      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -530,11 +557,11 @@
       
       <tag>Note</tag>
       
+      <tag>HackerHub</tag>
+      
       <tag>math</tag>
       
       <tag>algebra</tag>
-      
-      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -569,11 +596,11 @@
       
       <tag>Note</tag>
       
+      <tag>HackerHub</tag>
+      
       <tag>math</tag>
       
       <tag>algebra</tag>
-      
-      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -608,11 +635,11 @@
       
       <tag>Note</tag>
       
+      <tag>HackerHub</tag>
+      
       <tag>math</tag>
       
       <tag>algebra</tag>
-      
-      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
@@ -647,11 +674,11 @@
       
       <tag>Note</tag>
       
+      <tag>HackerHub</tag>
+      
       <tag>math</tag>
       
       <tag>algebra</tag>
-      
-      <tag>HackerHub</tag>
       
       <tag>Haskell</tag>
       
