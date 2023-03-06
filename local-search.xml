@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Category Theory as Mathematical Foundation</title>
+    <link href="/2023/03/06/category-foundation/"/>
+    <url>/2023/03/06/category-foundation/</url>
+    
+    <content type="html"><![CDATA[<h1 id="What-are-some-objections-to-taking-category-theory-as-a-mathematical-foundation"><a href="#What-are-some-objections-to-taking-category-theory-as-a-mathematical-foundation" class="headerlink" title="What are some objections to taking category theory as a mathematical foundation?"></a>What are some objections to taking category theory as a mathematical foundation?</h1><p>Category theory (CT) is a two sorted system of objects and arrows such that the axioms are satisfied. To take something as a mathematical foundation is to give an account of structure or system that has a structure while staying true to the Hilbert/Dedekind theory instead of the Fregean approach. To achieve this, we can either take set theory or category theory as the background theory that allows us to talk about structure or system. Taking category theory as a mathematical foundation means that either structures are some kind of category, or systems are categories. However, there are many objections to this approach from philosophers like Feferman, Shapiro, and Hellman.</p><h3 id="Objection-1-Does-CT-depend-on-set-theory-class-theory"><a href="#Objection-1-Does-CT-depend-on-set-theory-class-theory" class="headerlink" title="Objection 1: Does CT depend on set theory / class theory?"></a>Objection 1: Does CT depend on set theory / class theory?</h3><p>The first problem of taking category theory as a mathematical foundation is the dependency, or the question of “does CT depend on set theory / class theory?” Suppose we define CT as a two sorted system with sets as ‘object’ and functions as ‘arrow’, as ETCS. This objection from Feferman questions whether the intensional notion of set is logically/epistemologically/conceptually prior to the notion of category. Then we still need set theory as a foundation.</p><h3 id="Objection-2-Only-at-object-level-at-the-meta-level-you-have-to-ST-as-a-Fregeian-foundation"><a href="#Objection-2-Only-at-object-level-at-the-meta-level-you-have-to-ST-as-a-Fregeian-foundation" class="headerlink" title="Objection 2: Only at object level, at the meta-level you have to ST as a Fregeian foundation."></a>Objection 2: Only at object level, at the meta-level you have to ST as a Fregeian foundation.</h3><p>The objection from Shapiro states that we can be a Hilbertian about CT at the object level but not the meta-level. In other words, to talk about the meta-level of category, we still need the set theory. Therefore, at the meta-level we still have to take set theory as a Fregeian foundation. A problem is on the size of category. To define the category of categories would cause a chain of regress to set theory, class theory, and universe theory. To avoid this infinite regress of meta theories, we need to take it on a Fregean foundation.</p><h3 id="Objection-3-If-thenist-attempt-to-stop-the-regress-will-end-in-the-problem-facing-the-deductist"><a href="#Objection-3-If-thenist-attempt-to-stop-the-regress-will-end-in-the-problem-facing-the-deductist" class="headerlink" title="Objection 3: If-thenist attempt to stop the regress will end in the problem facing the deductist."></a>Objection 3: If-thenist attempt to stop the regress will end in the problem facing the deductist.</h3><p>A problem is on the size of category. To define the category of categories would cause a chain of regress to set theory, class theory, and universe theory. To avoid this infinite regress of meta theories, we need to take it on a Fregean foundation.</p><h3 id="As-ifism-to-solve-the-objections"><a href="#As-ifism-to-solve-the-objections" class="headerlink" title="As-ifism to solve the objections"></a>As-ifism to solve the objections</h3><p>To solve these objections, we can use the CCAF definition as the meta theory, where a category <strong>Cat</strong> is a two sorted system with categories as ‘objects’ and functors as ‘arrows’. However, some problem still exists with this CCAF definition. Since the category has a size problem, the category of all categories <strong>CAT</strong> will not be a category, which is not well-formed. Then the problem of infinite regress still exists. Another approach is to use As-ifism to cut a midpoint, which takes the background not as Fregean theory but as if they were consistent.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Philosophy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>math</tag>
+      
+      <tag>philosophy</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Mathematical Structuralism</title>
     <link href="/2023/02/26/mathematical-structuralism/"/>
     <url>/2023/02/26/mathematical-structuralism/</url>
@@ -522,13 +549,13 @@
       
       <tag>algebra</tag>
       
-      <tag>HackerHub</tag>
+      <tag>Haskell</tag>
       
       <tag>programming</tag>
       
-      <tag>Haskell</tag>
-      
       <tag>functional</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>logic</tag>
       
@@ -561,13 +588,13 @@
       
       <tag>algebra</tag>
       
-      <tag>HackerHub</tag>
+      <tag>Haskell</tag>
       
       <tag>programming</tag>
       
-      <tag>Haskell</tag>
-      
       <tag>functional</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>logic</tag>
       
@@ -600,13 +627,13 @@
       
       <tag>algebra</tag>
       
-      <tag>HackerHub</tag>
+      <tag>Haskell</tag>
       
       <tag>programming</tag>
       
-      <tag>Haskell</tag>
-      
       <tag>functional</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>logic</tag>
       
@@ -639,13 +666,13 @@
       
       <tag>algebra</tag>
       
-      <tag>HackerHub</tag>
+      <tag>Haskell</tag>
       
       <tag>programming</tag>
       
-      <tag>Haskell</tag>
-      
       <tag>functional</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>logic</tag>
       
@@ -678,13 +705,13 @@
       
       <tag>algebra</tag>
       
-      <tag>HackerHub</tag>
+      <tag>Haskell</tag>
       
       <tag>programming</tag>
       
-      <tag>Haskell</tag>
-      
       <tag>functional</tag>
+      
+      <tag>HackerHub</tag>
       
     </tags>
     
@@ -769,9 +796,9 @@
       
       <tag>Note</tag>
       
-      <tag>assembly</tag>
-      
       <tag>HackerHub</tag>
+      
+      <tag>assembly</tag>
       
     </tags>
     
@@ -796,9 +823,9 @@
     
     <tags>
       
-      <tag>HackerHub</tag>
-      
       <tag>programming</tag>
+      
+      <tag>HackerHub</tag>
       
     </tags>
     
@@ -943,11 +970,11 @@
     
     <tags>
       
+      <tag>Ideology</tag>
+      
       <tag>Music</tag>
       
       <tag>Hip-hop</tag>
-      
-      <tag>Ideology</tag>
       
       <tag>Musical</tag>
       
