@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>Be Careful Using Python Iterator</title>
+    <link href="/2023/08/20/py-iterator/"/>
+    <url>/2023/08/20/py-iterator/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Be-Careful-Using-Python-Iterator"><a href="#Be-Careful-Using-Python-Iterator" class="headerlink" title="Be Careful Using Python Iterator"></a>Be Careful Using Python Iterator</h1><p>In a recent experiment, I encountered a bug where all the results were shown as negative.After debugging, I found that the bug was caused by using the same iterator twice.My library API was designed to take a list of tuples as input,but when I called it later, I passed in a <code>map</code> object.</p><p>My API extracts the first and second elements of the tuple anduses them independently to obtain the experiment results.However, every time I ran the experiment,the list of second elements was empty,resulting in all negative results.</p><p>So, the key takeaway is that <strong>a Python iterator can only be consumed once</strong>!!</p><h2 id="Reproduction"><a href="#Reproduction" class="headerlink" title="Reproduction"></a>Reproduction</h2><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python3">def foo(x: int) -&gt; tuple[int, int]:<br>    return (x, x + 1)<br><br><br>xs &#x3D; [1, 2, 3]<br><br># case 1: list comprehension<br>ys &#x3D; [foo(x) for x in xs]<br>ys_fst &#x3D; [y[0] for y in ys]<br>ys_snd &#x3D; [y[1] for y in ys]<br><br># case 2: map<br>zs &#x3D; map(foo, xs)<br>zs_fst &#x3D; [z[0] for z in zs]<br>zs_snd &#x3D; [z[1] for z in zs]<br><br>print(ys_fst &#x3D;&#x3D; zs_fst)<br>print(ys_snd &#x3D;&#x3D; zs_snd)<br></code></pre></div></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Science</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>programming</tag>
+      
+      <tag>functional</tag>
+      
+      <tag>computer science</tag>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Clang Global Constructors</title>
     <link href="/2023/08/07/global-constructors/"/>
     <url>/2023/08/07/global-constructors/</url>
@@ -53,9 +84,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -80,9 +111,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -126,9 +157,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -153,9 +184,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -180,9 +211,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -207,9 +238,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -234,9 +265,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -261,9 +292,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -288,9 +319,9 @@
     
     <tags>
       
-      <tag>math</tag>
-      
       <tag>philosophy</tag>
+      
+      <tag>math</tag>
       
     </tags>
     
@@ -516,9 +547,9 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
+      
+      <tag>Note</tag>
       
       <tag>algebra</tag>
       
@@ -545,9 +576,9 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
+      
+      <tag>Note</tag>
       
       <tag>algebra</tag>
       
@@ -576,9 +607,9 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
+      
+      <tag>Note</tag>
       
       <tag>algebra</tag>
       
@@ -615,9 +646,9 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
+      
+      <tag>Note</tag>
       
       <tag>algebra</tag>
       
@@ -654,9 +685,9 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
+      
+      <tag>Note</tag>
       
       <tag>algebra</tag>
       
@@ -693,9 +724,9 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
+      
+      <tag>Note</tag>
       
       <tag>algebra</tag>
       
@@ -732,9 +763,9 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
+      
+      <tag>Note</tag>
       
       <tag>algebra</tag>
       
@@ -794,9 +825,9 @@
     
     <tags>
       
-      <tag>Note</tag>
-      
       <tag>math</tag>
+      
+      <tag>Note</tag>
       
       <tag>algebra</tag>
       
