@@ -1,0 +1,774 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="writing about interesting things.">
+  <meta name="author" content="Yifeng He">
+  <meta name="keywords" content="">
+  <meta name="description" content="Lambda CalculusIf you come from imperative programming, you might heard about the lambda expression. That is also called the “anonymous function”. This is a concept borrowed from functional programmin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introduction to Lambda Calculus">
+<meta property="og:url" content="https://eyh0602.github.io/2021/03/20/Lambda/index.html">
+<meta property="og:site_name" content="EYH Site">
+<meta property="og:description" content="Lambda CalculusIf you come from imperative programming, you might heard about the lambda expression. That is also called the “anonymous function”. This is a concept borrowed from functional programmin">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-21T03:55:17.000Z">
+<meta property="article:modified_time" content="2024-12-07T22:19:58.175Z">
+<meta property="article:author" content="Yifeng He">
+<meta property="article:tag" content="Note">
+<meta property="article:tag" content="math">
+<meta property="article:tag" content="algebra">
+<meta property="article:tag" content="HackerHub">
+<meta property="article:tag" content="Haskell">
+<meta property="article:tag" content="programming">
+<meta property="article:tag" content="functional">
+<meta property="article:tag" content="logic">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>Introduction to Lambda Calculus - EYH Site</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"eyh0602.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yifeng&#39;s Site</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About Me
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://canvas.ucdavis.edu/">
+                    
+                    UC Davis Canvas
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://catalog.ucdavis.edu/departments-programs-degrees/mathematics/applied-mathematics-bs/#informationtext">
+                    
+                    UC Davis Applied Math
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://catalog.ucdavis.edu/departments-programs-degrees/computer-science-engineering/computer-science-bs/">
+                    
+                    UC Davis Computer Science
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/cows_in_davis.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Introduction to Lambda Calculus">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Yifeng He
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-20 20:55" pubdate>
+        March 20, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.4k words
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17 minute
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> times
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Introduction to Lambda Calculus</h1>
+            
+              <p class="note note-info">
+                
+                  Last update: December 7, 2024 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="Lambda-Calculus"><a href="#Lambda-Calculus" class="headerlink" title="Lambda Calculus"></a>Lambda Calculus</h1><p>If you come from imperative programming,
+you might heard about the <strong>lambda expression</strong>.
+That is also called the “anonymous function”.
+This is a concept borrowed from functional programming
+(the word “function” kind of indicates that LOL).</p>
+<div class="note note-secondary">
+            <p>When I first encounter the idea of “anonymous function”,I did not understand the meaning of it.To me, it is more like a quick way to define simple method when I was too lazy.</p>
+          </div>
+
+<p>But what really is Lambda calculus?
+It is a simple <strong>notation system</strong> developed by 
+<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Alonzo_Church">Alonzo Church</a>
+to represent <a target="_blank" rel="noopener" href="https://plato.stanford.edu/entries/logic-combinatory/">Combinatory logic</a>.
+Lambda calculus is also the base of Functional programming,
+similar to what binary code and later assembly language means to imperative languages.</p>
+<p>From here, 
+we can see the main difference between imperative programming and declarative programming:</p>
+<ul>
+<li>imperative programming build up from the hardware level, telling the computer what to do.
+  Then we build up the abstraction as possible.</li>
+<li>declarative programming starts from logic,
+  then try to reduce abstraction for computer to understand
+  (that the compiler’s job, we only worry about logic).</li>
+</ul>
+<p>A lambda expression is just a function with out a name, a mapping, as
+$$ \lambda x . x $$
+which is just the identity function.</p>
+<p>In Haskell, the syntax is</p>
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell">\x -&gt; x<br></code></pre></div></td></tr></table></figure>
+<p>since we do not use unicode in programming,
+the character <code>\</code> the closed one to $\lambda$.</p>
+<h2 id="Currying"><a href="#Currying" class="headerlink" title="Currying"></a>Currying</h2><p>Theoretically,
+lambda calculus does not allow the function to take more than one input.
+That is why we define binary operation as
+$$ * : S \times S \rightarrow S $$
+which takes a pair of numbers as input and returns a number.</p>
+<p>This way of defining function is not very efficient,
+we want out function to take as much inputs as we want.
+mathematician <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Haskell_Curry">Haskell Brooks Curry</a>
+develops an idea to solve this problem.</p>
+<div class="note note-secondary">
+            <p>There are three programming languages name after him,Haskell, Brook, and Curry.</p>
+          </div>
+
+<p>The idea is that,
+for the function to take two inputs,
+iwe can to define a function that takes one input
+then returns a function that
+also (takes one input and returns one output).
+That is, for a binary operation, we write
+$$ * : S \rightarrow (S \rightarrow S) $$
+and the parenthesis can be ignored.</p>
+<p>In lambda calculus, we write the binary operation as
+$$ \lambda x. (\lambda y. x * y) \equiv \lambda xy. x * y $$</p>
+<p>With this idea in mind, we can play with some haskell functions.
+For example, we know addition takes two numbers and return their sum,
+what happens if we only give it one input?</p>
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-type">Prelude</span>&gt; :t (+)<br>(+) :: <span class="hljs-type">Num</span> a =&gt; a -&gt; a -&gt; a<br><span class="hljs-type">Prelude</span>&gt; :t (+<span class="hljs-number">1</span>)<br>(+<span class="hljs-number">1</span>) :: <span class="hljs-type">Num</span> a =&gt; a -&gt; a<br><span class="hljs-type">Prelude</span>&gt; <span class="hljs-number">1</span> + <span class="hljs-number">2</span><br><span class="hljs-number">3</span><br><span class="hljs-type">Prelude</span>&gt; (+<span class="hljs-number">1</span>) <span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></div></td></tr></table></figure>
+
+<p>We also even give the returned function a name</p>
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-type">Prelude</span>&gt; add1 = (<span class="hljs-number">1</span>+)<br><span class="hljs-type">Prelude</span>&gt; add1 <span class="hljs-number">10</span><br><span class="hljs-number">11</span><br><span class="hljs-type">Prelude</span>&gt; map add1 [<span class="hljs-number">1.</span><span class="hljs-number">.10</span>]<br>[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span>]<br></code></pre></div></td></tr></table></figure>
+
+<p>In this way, we can also define our own functions with defining the inputs</p>
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-title">getEven</span> :: <span class="hljs-type">Integral</span> a =&gt; [a] -&gt; [a]<br><span class="hljs-title">getEven</span> = filter even<br></code></pre></div></td></tr></table></figure>
+
+<p>This way of defining function is called <strong>wholemeal programming</strong>,
+which is the idiomatic Haskell style.</p>
+<h2 id="beta-Reduction"><a href="#beta-Reduction" class="headerlink" title="$\beta$-Reduction"></a>$\beta$-Reduction</h2><p>$\beta$-Reduction is a way to simplify a complex lambda expression.
+The idea is very simple,
+we can plug the input into the lambda expression and see what happens.</p>
+<p>For <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=3VQ382QG-y4&t=561s">example</a>,
+$$
+\begin{align}
+    &amp; ((\lambda a. a)\lambda b. \lambda c. b)(x) \lambda e.f \\
+    &amp; = (\lambda b.\lambda c.b)(x) \lambda e.f \\
+    &amp; = (\lambda c. x) \lambda e. f \\
+    &amp; = x.
+\end{align}
+$$</p>
+<p>After we fully evaluate the function, we call it a <strong>$\beta$-normal</strong> form.</p>
+<h2 id="Combinatory-Logic"><a href="#Combinatory-Logic" class="headerlink" title="Combinatory Logic"></a>Combinatory Logic</h2><p><strong>Definition:</strong>
+A <strong>combinator</strong> is a lambda expression that has no <em>free variable</em>.
+That is, the output can only be its inputs.</p>
+<p>Recall that we can pass a function as argument.
+Let’s define a <strong>self-application</strong> function
+$$ M = \lambda f. ff $$
+which is often called the <strong>Mockingbirds</strong>.</p>
+<blockquote>
+<p>Imagine you are in a forest inhabited by talking birds.
+Given any birds $A$ and $B$ in the forest,
+if you call out the name of $B$ to $A$,
+then $A$ will respond by calling out the name of some other bird to you.
+Then by the name of Mockingbird,
+$$ Mx = xx $$
+the bird $M$’s response to any bird $x$ is the same as $x$’s response to itself.
+It <em>mimics</em> $x$ as far as $x$’s response to $x$ goes.</p>
+</blockquote>
+<div class="note note-info">
+            <p>This idea comes from the book <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/To_Mock_a_Mockingbird">“To Mock a Mockingbird”</a>by Raymond Smullyan.It is a great book about combinatory logic and some other logic puzzles, very recommended.</p>
+          </div>
+
+<p>Then we define <strong>Kestrel</strong>,
+$$ K = \lambda ab. a $$
+which takes two inputs and returns the first parameter.
+Haskell provide function <code>const</code> as the Kestrel,</p>
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-title">const</span> :: a -&gt; b -&gt; a<br></code></pre></div></td></tr></table></figure>
+
+<p>Thinking about the name <code>const</code>, let’s define</p>
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-title">const1</span> :: <span class="hljs-type">Num</span> a =&gt; b -&gt; a<br></code></pre></div></td></tr></table></figure>
+<p>then,</p>
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-type">Prelude</span>&gt; const1 <span class="hljs-number">2</span><br><span class="hljs-number">1</span><br><span class="hljs-type">Prelude</span>&gt; const1 <span class="hljs-number">5</span><br><span class="hljs-number">1</span><br><span class="hljs-type">Prelude</span>&gt; const1 <span class="hljs-number">10</span><br><span class="hljs-number">1</span><br><span class="hljs-type">Prelude</span>&gt; map const1 [<span class="hljs-number">1.</span><span class="hljs-number">.10</span>]<br>[<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>]<br></code></pre></div></td></tr></table></figure>
+
+<p>The beauty of combinatory logic, as well as Functional programming,
+is that
+with identity, Mockingbird, and Kestrel, we can create the world.</p>
+<p>What if we want the the second parameter instead of the first one?
+In the trivial way, we might define the function as $\lambda ab. b$.
+But if we think about this, we can identity as  Kestrel’s input
+$$ KIx = (\lambda ab. a)(\lambda a. a)x = \lambda x.x = I  $$
+which is the identity!
+Then we can try to apply this function to some value
+$$ KIxy = Iy = y. $$
+Let’s call the function $KI$  <strong>Kite</strong>.</p>
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-title">kite</span> :: a -&gt; b -&gt; b<br><span class="hljs-title">kite</span> = const id<br></code></pre></div></td></tr></table></figure>
+<p>then </p>
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-type">Prelude</span>&gt; kite <span class="hljs-number">1</span> <span class="hljs-number">2</span><br><span class="hljs-number">2</span><br><span class="hljs-type">Prelude</span>&gt; kite <span class="hljs-number">3</span> <span class="hljs-number">2</span><br><span class="hljs-number">2</span><br><span class="hljs-type">Prelude</span>&gt; kite <span class="hljs-number">3</span> <span class="hljs-number">1</span><br><span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+
+<p>Another fundamental combinator is the <strong>Cardinal</strong>, 
+$$ C = \lambda fab. fba $$
+which is the <em>reverse application</em>.
+This is defined as the <code>flip</code> function in haskell.</p>
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-title">flip</span> :: (a -&gt; b -&gt; c) -&gt; b -&gt; a -&gt; c<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-type">Prelude</span>&gt; combineStr a b = show a ++ show b<br><span class="hljs-type">Prelude</span>&gt; :t combineStr <br><span class="hljs-title">combineStr</span> :: (<span class="hljs-type">Show</span> a1, <span class="hljs-type">Show</span> a2) =&gt; a1 -&gt; a2 -&gt; [<span class="hljs-type">Char</span>]<br><span class="hljs-type">Prelude</span>&gt; combineStr <span class="hljs-number">1</span> <span class="hljs-number">3</span><br><span class="hljs-string">&quot;13&quot;</span><br><span class="hljs-type">Prelude</span>&gt; flip combineStr <span class="hljs-number">1</span> <span class="hljs-number">3</span><br><span class="hljs-string">&quot;31&quot;</span><br><span class="hljs-type">Prelude</span>&gt; <br></code></pre></div></td></tr></table></figure>
+
+<p>And the most important one is composition of functions!
+That is the reason why we talk about functional programming.
+Define the <strong>Bluebird</strong>
+$$ B = \lambda fga . f(ga) $$
+to be the composition combinator.</p>
+<p>In Haskell, as shown in last post, is</p>
+<figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell">(.) :: (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c<br></code></pre></div></td></tr></table></figure>
+
+<p>Theoretically,
+using Kestrel and Cardinal we can get all the possible combinators.
+So there might be a way to compile any functional program into these two combinators.</p>
+<blockquote>
+<p>Can we build a working computer with only Kestrel and Cardinal?
+For more information, visit</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://core.ac.uk/download/pdf/82459455.pdf">Functional Programming with Combinators</a>.</li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=3VQ382QG-y4&t=561s">Lambda Calculus - Fullstack Academy</a>.</li>
+</ul>
+<p><strong>Note.</strong>
+If yuo want to try out the bird names in Haskell,
+there is a library for that
+<a target="_blank" rel="noopener" href="https://hackage.haskell.org/package/data-aviary-0.4.0/docs/Data-Aviary-Birds.html">Data.Aviary.Birds</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Science/">Science</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Note/">Note</a>
+                    
+                      <a class="hover-with-bg" href="/tags/math/">math</a>
+                    
+                      <a class="hover-with-bg" href="/tags/algebra/">algebra</a>
+                    
+                      <a class="hover-with-bg" href="/tags/HackerHub/">HackerHub</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Haskell/">Haskell</a>
+                    
+                      <a class="hover-with-bg" href="/tags/programming/">programming</a>
+                    
+                      <a class="hover-with-bg" href="/tags/functional/">functional</a>
+                    
+                      <a class="hover-with-bg" href="/tags/logic/">logic</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    All blog follow <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow noopener noopener">CC BY-SA 4.0 licenses</a>, please cite the creator when reprinting.
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/03/21/Lambda2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">How does lambda build up the world?</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/19/Function/">
+                        <span class="hidden-mobile">Think about Functions</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'photon-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'EYH0602/blog');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
