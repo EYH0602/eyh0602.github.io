@@ -1,0 +1,708 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="writing about interesting things.">
+  <meta name="author" content="Boqi Zhao">
+  <meta name="keywords" content="">
+  <meta name="description" content="ResVote: A Scalable and Secure Online Voting System Built on ResilientDBOur Motivation Traditional voting systems, such as in-person voting and mail-in ballots, are often slow, prone to errors, and vu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Resilient Vote">
+<meta property="og:url" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/index.html">
+<meta property="og:site_name" content="EYH Site">
+<meta property="og:description" content="ResVote: A Scalable and Secure Online Voting System Built on ResilientDBOur Motivation Traditional voting systems, such as in-person voting and mail-in ballots, are often slow, prone to errors, and vu">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote_React.png">
+<meta property="article:published_time" content="2024-12-08T08:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-08T19:08:07.692Z">
+<meta property="article:author" content="Yifeng He">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="Distributed Systems">
+<meta property="article:tag" content="Database">
+<meta property="article:tag" content="Security">
+<meta property="article:tag" content="ResilientDB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://eyh0602.github.io/images/ResVote.png">
+  
+  <title>Resilient Vote - EYH Site</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"eyh0602.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yifeng&#39;s Site</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://canvas.ucdavis.edu/">
+                    
+                    UC Davis Canvas
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://catalog.ucdavis.edu/departments-programs-degrees/mathematics/applied-mathematics-bs/#informationtext">
+                    
+                    UC Davis Applied Math
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://catalog.ucdavis.edu/departments-programs-degrees/computer-science-engineering/computer-science-bs/">
+                    
+                    UC Davis Computer Science
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/cows_in_davis.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Resilient Vote">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Boqi Zhao
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2024-12-08 00:00" pubdate>
+        December 8, 2024 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.8k words
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28 minute
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> times
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Resilient Vote</h1>
+            
+              <p class="note note-info">
+                
+                  Last update: December 8, 2024 am
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="ResVote-A-Scalable-and-Secure-Online-Voting-System-Built-on-ResilientDB"><a href="#ResVote-A-Scalable-and-Secure-Online-Voting-System-Built-on-ResilientDB" class="headerlink" title="ResVote: A Scalable and Secure Online Voting System Built on ResilientDB"></a>ResVote: A Scalable and Secure Online Voting System Built on ResilientDB</h1><h2 id="Our-Motivation"><a href="#Our-Motivation" class="headerlink" title="Our Motivation"></a>Our Motivation</h2><ul>
+<li><p>Traditional voting systems, such as in-person voting and mail-in ballots, are often slow, prone to errors, and vulnerable to fraud. These methods are labor-intensive and struggle to handle large-scale elections efficiently.</p>
+</li>
+<li><p>Resilient Vote leverages ResilientDB to create a secure, scalable online voting platform. The system guarantees confidentiality, integrity, and transparency, ensuring that elections are both reliable and tamper-proof.</p>
+</li>
+</ul>
+<h2 id="Our-Goals"><a href="#Our-Goals" class="headerlink" title="Our Goals"></a>Our Goals</h2><h2 id="Project-Goals-and-Objectives"><a href="#Project-Goals-and-Objectives" class="headerlink" title="Project Goals and Objectives"></a>Project Goals and Objectives</h2><p>The primary goal of <strong>Resilient Vote</strong> is to develop a secure and scalable voting system that addresses the limitations of traditional voting methods. By using <strong>ResilientDB</strong> as the underlying database, we aim to create a system that is not only reliable but also capable of handling large-scale elections efficiently.</p>
+<p>Key objectives of our project include:</p>
+<ul>
+<li><strong>Scalability</strong>: Build a platform that can handle a high volume of voters and election data without compromising performance.</li>
+<li><strong>Security</strong>: Ensure the confidentiality and integrity of votes through cryptographic techniques and tamper-proof storage.</li>
+<li><strong>Transparency</strong>: Provide clear and accessible visualizations of election data to ensure transparency and accountability in the voting process.</li>
+<li><strong>Automation</strong>: Eliminate the need for manual vote counting by automating the vote tallying process, reducing errors and human intervention.</li>
+<li><strong>Ease of Use</strong>: Develop a user-friendly web interface that makes the voting process seamless for voters, administrators, and election officials.</li>
+</ul>
+<h2 id="Technical-Approach"><a href="#Technical-Approach" class="headerlink" title="Technical Approach"></a>Technical Approach</h2><p>To build <strong>Resilient Vote</strong>, we designed a secure, scalable, and user-friendly system by leveraging modern technologies and distributed database solutions. Our approach integrates a web-based front end, a robust back-end API, and a fault-tolerant database system powered by <strong>ResilientDB</strong>.</p>
+<p><img src="/images/ResVote.png" srcset="/img/loading.gif" lazyload alt="Resilient Vote"></p>
+<h3 id="System-Architecture"><a href="#System-Architecture" class="headerlink" title="System Architecture"></a>System Architecture</h3><p>The system is divided into three main components:</p>
+<ol>
+<li><strong>Front-End (React &amp; XML-RPC)</strong>:<ul>
+<li>The user interface is built using <strong>React</strong>, ensuring a responsive and interactive experience for voters, administrators, and general users.</li>
+<li>For communication between the front end and the back end, we use <strong>XML-RPC</strong> (Extensible Markup Language Remote Procedure Call). XML-RPC allows the front-end React application to interact with the back-end services securely and efficiently. By using this protocol, the system can send method calls to the server and receive responses, ensuring smooth data exchange and integration between the user interface and the database.</li>
+<li>This approach provides a lightweight solution for data transmission, making it easy to implement in a distributed environment while maintaining high security and reliability.
+<img src="/images/ResVote_React.png" srcset="/img/loading.gif" lazyload alt="ResVote React Frontend"></li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p><strong>Back-End (ResilientDB Crow Service &amp; ORM)</strong>:</p>
+<ul>
+<li>The back-end uses <strong>ResilientDB Crow Service</strong> and <strong>ResilientDB ORM</strong> to interact with the database. The <strong>Crow Service</strong> ensures that the system is fault-tolerant and highly available, with data securely stored and accessible across distributed nodes.</li>
+<li>The <strong>ResilientDB ORM</strong> simplifies the database interactions by abstracting CRUD operations into Python-friendly methods, reducing boilerplate code and making it easier to manage votes and election data efficiently.</li>
+</ul>
+</li>
+<li><p><strong>Database (ResilientDB &amp; MongoDB)</strong>:</p>
+<ul>
+<li><strong>ResilientDB</strong> serves as the primary database, providing a distributed, fault-tolerant system to store and manage votes securely. Key features of ResilientDB, such as <strong>parallel processing</strong>, <strong>system crash resilience</strong>, and robust <strong>security</strong>, ensure data integrity and high availability, making it the perfect solution for a scalable voting system.</li>
+<li><strong>MongoDB</strong> is used as a caching layer for the transactions. It stores temporary data related to votes and election activities, helping to reduce latency and improve system performance by offloading frequent read and write operations from ResilientDB. MongoDB serves as a fast, scalable cache to ensure that the system can handle high volumes of requests during peak voting periods.</li>
+</ul>
+</li>
+</ol>
+<ol start="4">
+<li><strong>Randomized Vote Generator based-on Property-based Testing</strong>:<ul>
+<li>To ensure the reliability and robustness of the voting system, we use the <strong>Hypothesis</strong> library, a property-based testing tool for simulating election events. With <strong>Hypothesis</strong>, we generate random election scenarios, including creating voters, elections, and votes. This enables us to test the system under various conditions and verify that it behaves as expected.</li>
+<li>By stress-testing the system with large-scale, simulated data, <strong>Hypothesis</strong> helps identify edge cases and potential issues, ensuring that <strong>Resilient Vote</strong> performs accurately and securely under diverse scenarios.</li>
+</ul>
+</li>
+</ol>
+<h2 id="Deployment-Tutorial-From-Scratch"><a href="#Deployment-Tutorial-From-Scratch" class="headerlink" title="Deployment Tutorial From Scratch"></a>Deployment Tutorial From Scratch</h2><p>In order to provide more complete examples for beginners who are interested in participating in distributed database projects, we have improved the project documentation to deliver a project guide from scratch.</p>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p>We recommend using <code>conda</code> to manage python environment.</p>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">conda create -n <span class="hljs-string">&quot;resdb&quot;</span> python=3.10.0 ipython<br>conda activate resdb<br>pip install -r requirements.txt<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="Get-ResilientDB-Dependencies"><a href="#Get-ResilientDB-Dependencies" class="headerlink" title="Get ResilientDB Dependencies"></a>Get ResilientDB Dependencies</h3><p>To save some time, we also provide a docker image that has all the dependencies installed.</p>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">docker pull yfhecs/rsdb<br>docker run -d -p 18000:18000 --name resdb yfhecs/rsdb<br></code></pre></div></td></tr></table></figure>
+<p>If you choose to use docker, you can skip the following steps.
+Please wait a few minutes for the docker container to start.
+You can check if it is ready by the follow command:</p>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">❯ curl -X POST -d <span class="hljs-string">&#x27;&#123;&quot;id&quot;:&quot;key1&quot;,&quot;value&quot;:&quot;value1&quot;&#125;&#x27;</span> localhost:18000/v1/transactions/commit<br>id: key1<br><br>❯ curl 127.0.0.1:18000/v1/transactions/key1<br>&#123;<span class="hljs-string">&quot;id&quot;</span>:<span class="hljs-string">&quot;key1&quot;</span>,<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-string">&quot;value1&quot;</span>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>You can also find the related dockerfile in the <code>./docker</code> directory.</p>
+<h4 id="ResilientDB"><a href="#ResilientDB" class="headerlink" title="ResilientDB"></a>ResilientDB</h4><p>The following commands will clone and build ResilientDB,
+and then starts 4 replicas and 1 client. Each replica instantiates a key-value store.</p>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">git <span class="hljs-built_in">clone</span> https://github.com/apache/incubator-resilientdb.git resilientdb<br><span class="hljs-built_in">cd</span> resilientdb<br>./INSTALL.sh<br>./service/tools/kv/server_tools/start_kv_service.sh<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="Graph-QL"><a href="#Graph-QL" class="headerlink" title="Graph QL"></a>Graph QL</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">git <span class="hljs-built_in">clone</span> https://github.com/apache/incubator-resilientdb-graphql.git resilientdb-graphql<br><span class="hljs-built_in">cd</span> resilientdb-graphql<br>sh ./INSTALL.sh<br>pip install -r requirements.txt<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="Running-Crow-service-HTTP-endpoints"><a href="#Running-Crow-service-HTTP-endpoints" class="headerlink" title="Running Crow service (HTTP endpoints)"></a>Running Crow service (HTTP endpoints)</h5><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">bazel build service/http_server/crow_service_main<br>bazel-bin/service/http_server/crow_service_main service/tools/config/interface/client.config service/http_server/server_config.config<br></code></pre></div></td></tr></table></figure>
+
+
+<h3 id="ResVote-Server"><a href="#ResVote-Server" class="headerlink" title="ResVote Server"></a>ResVote Server</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-built_in">source</span> ./env.sh<br>python app/serve.py<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="ResVote-TUI-Client"><a href="#ResVote-TUI-Client" class="headerlink" title="ResVote TUI Client"></a>ResVote TUI Client</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-built_in">source</span> ./env.sh<br>python app/tui.py<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="Results-amp-Achievements"><a href="#Results-amp-Achievements" class="headerlink" title="Results &amp; Achievements"></a>Results &amp; Achievements</h2><p>The development of <strong>Resilient Vote</strong> has yielded significant progress in both the <strong>Virtual Vote Generator</strong> and <strong>Data Visualizations</strong>, two core features of the system.</p>
+<h3 id="Virtual-Vote-Generator"><a href="#Virtual-Vote-Generator" class="headerlink" title="Virtual Vote Generator"></a>Virtual Vote Generator</h3><p>One of the key innovations of our project is the <strong>Virtual Vote Generator</strong>, developed using the <strong>Hypothesis</strong> library. This tool simulates large-scale election events by automatically generating random voting data. It creates virtual voters, assigns them different identity attributes (such as age, gender, region, etc.), and simulates voting in various election scenarios.</p>
+<p>The <strong>Virtual Vote Generator</strong> serves three main purposes:</p>
+<ol>
+<li><strong>Stress Testing</strong>: It helps simulate high volumes of votes to ensure the system can handle large-scale elections without performance degradation.</li>
+<li><strong>System Validation</strong>: The generator validates that the system handles diverse voting scenarios correctly, ensuring data consistency across distributed nodes.</li>
+</ol>
+<p>This feature is essential for testing the resilience and scalability of the system before it’s deployed in real-world elections.</p>
+<h3 id="Data-Visualizations"><a href="#Data-Visualizations" class="headerlink" title="Data Visualizations"></a>Data Visualizations</h3><p>The system includes a powerful <strong>data visualization</strong> component that provides a clear and interactive view of the election results. The visualizations include a variety of charts and graphs that are automatically updated as votes are cast. Key features of the data visualization component include:</p>
+<ul>
+<li><strong>Real-Time Election Results</strong>: As votes are cast, the system displays real-time updates in the form of bar charts, pie charts, and line graphs.</li>
+<li><strong>Voter Demographics</strong>: The system visualizes the distribution of votes across different voter demographics, such as age groups, regions, and other attributes.</li>
+<li><strong>Trend Analysis</strong>: The visualizations show trends in voting over time, helping administrators understand voter participation patterns.</li>
+</ul>
+<p>These visualizations not only enhance the transparency of the voting process but also make it easier to interpret the results and track the progress of elections.</p>
+<p>By combining these two powerful features—automated voting simulations and real-time, interactive data visualizations—<strong>Resilient Vote</strong> provides a robust platform for conducting scalable, transparent, and efficient elections.</p>
+<h2 id="Future-Plans"><a href="#Future-Plans" class="headerlink" title="Future Plans"></a>Future Plans</h2><p>As we continue to develop <strong>Resilient Vote</strong>, there are several key areas we plan to improve and enhance:</p>
+<h3 id="1-UI-Enhancement-and-Front-End-amp-Back-End-Integration-Upgrade"><a href="#1-UI-Enhancement-and-Front-End-amp-Back-End-Integration-Upgrade" class="headerlink" title="1. UI Enhancement and Front-End &amp; Back-End Integration Upgrade"></a>1. UI Enhancement and Front-End &amp; Back-End Integration Upgrade</h3><p>Our primary focus for future development is to <strong>enhance the user interface</strong> with more user-friendly operating logic and <strong>strengthen the integration between the front-end and back-end</strong>. While the current system is functional, we aim to improve the overall user experience by ensuring a seamless flow of data between the front-end and back-end, making the platform more responsive and efficient.</p>
+<h3 id="2-Real-Time-Visualization-of-Vote-Trends"><a href="#2-Real-Time-Visualization-of-Vote-Trends" class="headerlink" title="2. Real-Time Visualization of Vote Trends"></a>2. Real-Time Visualization of Vote Trends</h3><p>We will take the <strong>data visualization</strong> features a step further by incorporating <strong>real-time vote trends</strong> during elections. This will allow voters and administrators to track the election results dynamically, providing insights into voter participation and trends as the voting progresses.</p>
+<h3 id="3-Enhanced-User-Registration-Security"><a href="#3-Enhanced-User-Registration-Security" class="headerlink" title="3. Enhanced User Registration Security"></a>3. Enhanced User Registration Security</h3><p>We will implement more robust security measures like Multi-factor authentication (MFA) to protect user identities and prevent unauthorized access. In addition, we plan to achieve advanced encryption methods to protect personal information and prevent data breaches.</p>
+<h2 id="About-Team"><a href="#About-Team" class="headerlink" title="About Team"></a>About Team</h2><p><strong>ECS 265 Distributed Database Systems Fall 2024</strong><br>Professor <a target="_blank" rel="noopener" href="https://expolab.org/">Mohammad Sadoghi</a>
+TA <a target="_blank" rel="noopener" href="https://dakaikang.github.io/">Daikai Kang</a></p>
+<h3 id="Team-Members"><a href="#Team-Members" class="headerlink" title="Team Members:"></a>Team Members:</h3><ul>
+<li>Tyler Culp</li>
+<li>Jason Eissayou</li>
+<li>Simon Draeger</li>
+<li><a target="_blank" rel="noopener" href="https://yfhe.net/about/">Yifeng He</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.linkedin.com/in/jicheng-jeremy-wang-0a07b833b/">Jicheng Wang</a></li>
+<li>Boqi Zhao</li>
+</ul>
+<p>University of California, Davis<br>Davis, CA</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Science/">Science</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Computer-Science/">Computer Science</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Distributed-Systems/">Distributed Systems</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Database/">Database</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Security/">Security</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ResilientDB/">ResilientDB</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    All blog follow <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow noopener noopener">CC BY-SA 4.0 licenses</a>, please cite the creator when reprinting.
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/09/23/knight/">
+                        <span class="hidden-mobile">愁容满面，但像骑士一样冲锋</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'photon-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'EYH0602/blog');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
