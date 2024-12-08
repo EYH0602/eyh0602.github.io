@@ -25,10 +25,22 @@
 <meta property="og:site_name" content="EYH Site">
 <meta property="og:description" content="ResVote: A Scalable and Secure Online Voting System Built on ResilientDBOur Motivation Traditional voting systems, such as in-person voting and mail-in ballots, are often slow, prone to errors, and vu">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://eyh0602.github.io/images/ResVote.png">
-<meta property="og:image" content="https://eyh0602.github.io/images/ResVote_React.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/ResVote.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/ResVote_React.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/age_attribute_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/candidate_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/education_grouped_bar_chart.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/gender_grouped_bar_chart.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/race_grouped_bar_chart.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/region_grouped_bar_chart.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/age_grouped_bar_chart.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/education_attribute_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/gender_attribute_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/race_attribute_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/region_attribute_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/time_series.png">
 <meta property="article:published_time" content="2024-12-08T08:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-08T19:08:07.692Z">
+<meta property="article:modified_time" content="2024-12-08T22:14:20.679Z">
 <meta property="article:author" content="Yifeng He">
 <meta property="article:tag" content="Computer Science">
 <meta property="article:tag" content="Distributed Systems">
@@ -36,7 +48,7 @@
 <meta property="article:tag" content="Security">
 <meta property="article:tag" content="ResilientDB">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://eyh0602.github.io/images/ResVote.png">
+<meta name="twitter:image" content="https://eyh0602.github.io/images/ResVote/ResVote.png">
   
   <title>Resilient Vote - EYH Site</title>
 
@@ -302,7 +314,7 @@
             
               <p class="note note-info">
                 
-                  Last update: December 8, 2024 am
+                  Last update: December 8, 2024 pm
                 
               </p>
             
@@ -323,14 +335,14 @@
 <li><strong>Ease of Use</strong>: Develop a user-friendly web interface that makes the voting process seamless for voters, administrators, and election officials.</li>
 </ul>
 <h2 id="Technical-Approach"><a href="#Technical-Approach" class="headerlink" title="Technical Approach"></a>Technical Approach</h2><p>To build <strong>Resilient Vote</strong>, we designed a secure, scalable, and user-friendly system by leveraging modern technologies and distributed database solutions. Our approach integrates a web-based front end, a robust back-end API, and a fault-tolerant database system powered by <strong>ResilientDB</strong>.</p>
-<p><img src="/images/ResVote.png" srcset="/img/loading.gif" lazyload alt="Resilient Vote"></p>
+<p><img src="/images/ResVote/ResVote.png" srcset="/img/loading.gif" lazyload alt="Resilient Vote"></p>
 <h3 id="System-Architecture"><a href="#System-Architecture" class="headerlink" title="System Architecture"></a>System Architecture</h3><p>The system is divided into three main components:</p>
 <ol>
 <li><strong>Front-End (React &amp; XML-RPC)</strong>:<ul>
 <li>The user interface is built using <strong>React</strong>, ensuring a responsive and interactive experience for voters, administrators, and general users.</li>
 <li>For communication between the front end and the back end, we use <strong>XML-RPC</strong> (Extensible Markup Language Remote Procedure Call). XML-RPC allows the front-end React application to interact with the back-end services securely and efficiently. By using this protocol, the system can send method calls to the server and receive responses, ensuring smooth data exchange and integration between the user interface and the database.</li>
 <li>This approach provides a lightweight solution for data transmission, making it easy to implement in a distributed environment while maintaining high security and reliability.
-<img src="/images/ResVote_React.png" srcset="/img/loading.gif" lazyload alt="ResVote React Frontend"></li>
+<img src="/images/ResVote/ResVote_React.png" srcset="/img/loading.gif" lazyload alt="ResVote React Frontend"></li>
 </ul>
 </li>
 </ol>
@@ -396,6 +408,18 @@ and then starts 4 replicas and 1 client. Each replica instantiates a key-value s
 </ul>
 <p>These visualizations not only enhance the transparency of the voting process but also make it easier to interpret the results and track the progress of elections.</p>
 <p>By combining these two powerful features—automated voting simulations and real-time, interactive data visualizations—<strong>Resilient Vote</strong> provides a robust platform for conducting scalable, transparent, and efficient elections.</p>
+<p><img src="/images/ResVote/age_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="age_attribute_distribution">
+<img src="/images/ResVote/candidate_distribution.png" srcset="/img/loading.gif" lazyload alt="candidate_distribution">
+<img src="/images/ResVote/education_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="education_grouped_bar_chart">
+<img src="/images/ResVote/gender_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="gender_grouped_bar_chart">
+<img src="/images/ResVote/race_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="race_grouped_bar_chart">
+<img src="/images/ResVote/region_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="region_grouped_bar_chart">
+<img src="/images/ResVote/age_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="age_grouped_bar_chart">
+<img src="/images/ResVote/education_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="education_attribute_distribution">
+<img src="/images/ResVote/gender_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="gender_attribute_distribution">
+<img src="/images/ResVote/race_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="race_attribute_distribution">
+<img src="/images/ResVote/region_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="region_attribute_distribution">
+<img src="/images/ResVote/time_series.png" srcset="/img/loading.gif" lazyload alt="time_series"></p>
 <h2 id="Future-Plans"><a href="#Future-Plans" class="headerlink" title="Future Plans"></a>Future Plans</h2><p>As we continue to develop <strong>Resilient Vote</strong>, there are several key areas we plan to improve and enhance:</p>
 <h3 id="1-UI-Enhancement-and-Front-End-amp-Back-End-Integration-Upgrade"><a href="#1-UI-Enhancement-and-Front-End-amp-Back-End-Integration-Upgrade" class="headerlink" title="1. UI Enhancement and Front-End &amp; Back-End Integration Upgrade"></a>1. UI Enhancement and Front-End &amp; Back-End Integration Upgrade</h3><p>Our primary focus for future development is to <strong>enhance the user interface</strong> with more user-friendly operating logic and <strong>strengthen the integration between the front-end and back-end</strong>. While the current system is functional, we aim to improve the overall user experience by ensuring a seamless flow of data between the front-end and back-end, making the platform more responsive and efficient.</p>
 <h3 id="2-Real-Time-Visualization-of-Vote-Trends"><a href="#2-Real-Time-Visualization-of-Vote-Trends" class="headerlink" title="2. Real-Time Visualization of Vote Trends"></a>2. Real-Time Visualization of Vote Trends</h3><p>We will take the <strong>data visualization</strong> features a step further by incorporating <strong>real-time vote trends</strong> during elections. This will allow voters and administrators to track the election results dynamically, providing insights into voter participation and trends as the voting progresses.</p>
