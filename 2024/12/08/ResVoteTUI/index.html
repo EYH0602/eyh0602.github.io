@@ -25,22 +25,22 @@
 <meta property="og:site_name" content="EYH Site">
 <meta property="og:description" content="ResVote: A Scalable and Secure Online Voting System Built on ResilientDBOur Motivation Traditional voting systems, such as in-person voting and mail-in ballots, are often slow, prone to errors, and vu">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/ResVote.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/ResVote_React.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/candidate_distribution.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/age_attribute_distribution.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/gender_attribute_distribution.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/region_attribute_distribution.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/race_attribute_distribution.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/education_attribute_distribution.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/age_grouped_bar_chart.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/gender_grouped_bar_chart.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/region_grouped_bar_chart.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/race_grouped_bar_chart.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/education_grouped_bar_chart.png">
-<meta property="og:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/time_series.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/ResVote.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/ResVote_React.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/candidate_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/age_attribute_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/gender_attribute_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/region_attribute_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/race_attribute_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/education_attribute_distribution.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/age_grouped_bar_chart.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/gender_grouped_bar_chart.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/region_grouped_bar_chart.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/race_grouped_bar_chart.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/education_grouped_bar_chart.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/ResVote/time_series.png">
 <meta property="article:published_time" content="2024-12-08T08:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-08T22:41:48.172Z">
+<meta property="article:modified_time" content="2024-12-08T22:43:08.796Z">
 <meta property="article:author" content="Yifeng He">
 <meta property="article:tag" content="Computer Science">
 <meta property="article:tag" content="Distributed Systems">
@@ -48,7 +48,7 @@
 <meta property="article:tag" content="Security">
 <meta property="article:tag" content="ResilientDB">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://eyh0602.github.io/2024/12/08/ResVoteTUI/images/ResVote.png">
+<meta name="twitter:image" content="https://eyh0602.github.io/images/ResVote/ResVote.png">
   
   <title>Resilient Vote - EYH Site</title>
 
@@ -335,14 +335,14 @@
 <li><strong>Ease of Use</strong>: Develop a user-friendly web interface that makes the voting process seamless for voters, administrators, and election officials.</li>
 </ul>
 <h2 id="Technical-Approach"><a href="#Technical-Approach" class="headerlink" title="Technical Approach"></a>Technical Approach</h2><p>To build <strong>Resilient Vote</strong>, we designed a secure, scalable, and user-friendly system by leveraging modern technologies and distributed database solutions. Our approach integrates a web-based front end, a robust back-end API, and a fault-tolerant database system powered by <strong>ResilientDB</strong>.</p>
-<p><img src="./images/ResVote.png" srcset="/img/loading.gif" lazyload alt="Resilient Vote"></p>
+<p><img src="/images/ResVote/ResVote.png" srcset="/img/loading.gif" lazyload alt="Resilient Vote"></p>
 <h3 id="System-Architecture"><a href="#System-Architecture" class="headerlink" title="System Architecture"></a>System Architecture</h3><p>The system is divided into three main components:</p>
 <ol>
 <li><strong>Front-End (React &amp; XML-RPC)</strong>:<ul>
 <li>The user interface is built using <strong>React</strong>, ensuring a responsive and interactive experience for voters, administrators, and general users.</li>
 <li>For communication between the front end and the back end, we use <strong>XML-RPC</strong> (Extensible Markup Language Remote Procedure Call). XML-RPC allows the front-end React application to interact with the back-end services securely and efficiently. By using this protocol, the system can send method calls to the server and receive responses, ensuring smooth data exchange and integration between the user interface and the database.</li>
 <li>This approach provides a lightweight solution for data transmission, making it easy to implement in a distributed environment while maintaining high security and reliability.
-<img src="./images/ResVote_React.png" srcset="/img/loading.gif" lazyload alt="ResVote React Frontend"></li>
+<img src="/images/ResVote/ResVote_React.png" srcset="/img/loading.gif" lazyload alt="ResVote React Frontend"></li>
 </ul>
 </li>
 </ol>
@@ -412,9 +412,9 @@ and then starts 4 replicas and 1 client. Each replica instantiates a key-value s
 <table>
 <thead>
 <tr>
-<th align="center"><img src="./images/candidate_distribution.png" srcset="/img/loading.gif" lazyload alt="Candidate Distribution" style="width:150px; height:150px;"></th>
-<th align="center"><img src="./images/age_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="Age Distribution" style="width:150px; height:auto;"></th>
-<th align="center"><img src="./images/gender_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="Gender Distribution" style="width:150px; height:auto;"></th>
+<th align="center"><img src="/images/ResVote/candidate_distribution.png" srcset="/img/loading.gif" lazyload alt="Candidate Distribution" style="width:150px; height:150px;"></th>
+<th align="center"><img src="/images/ResVote/age_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="Age Distribution" style="width:150px; height:auto;"></th>
+<th align="center"><img src="/images/ResVote/gender_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="Gender Distribution" style="width:150px; height:auto;"></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -426,9 +426,9 @@ and then starts 4 replicas and 1 client. Each replica instantiates a key-value s
 <table>
 <thead>
 <tr>
-<th align="center"><img src="./images/region_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="Region Distribution" style="width:150px; height:auto;"></th>
-<th align="center"><img src="./images/race_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="Race Distribution" style="width:150px; height:auto;"></th>
-<th align="center"><img src="./images/education_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="Education Distribution" style="width:150px; height:auto;"></th>
+<th align="center"><img src="/images/ResVote/region_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="Region Distribution" style="width:150px; height:auto;"></th>
+<th align="center"><img src="/images/ResVote/race_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="Race Distribution" style="width:150px; height:auto;"></th>
+<th align="center"><img src="/images/ResVote/education_attribute_distribution.png" srcset="/img/loading.gif" lazyload alt="Education Distribution" style="width:150px; height:auto;"></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -441,9 +441,9 @@ and then starts 4 replicas and 1 client. Each replica instantiates a key-value s
 <table>
 <thead>
 <tr>
-<th align="center"><img src="./images/age_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="Age Grouped Bar Chart" style="width:150px; height:auto;"></th>
-<th align="center"><img src="./images/gender_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="Gender Grouped Bar Chart" style="width:150px; height:auto;"></th>
-<th align="center"><img src="./images/region_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="Region Grouped Bar Chart" style="width:150px; height:auto;"></th>
+<th align="center"><img src="/images/ResVote/age_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="Age Grouped Bar Chart" style="width:150px; height:auto;"></th>
+<th align="center"><img src="/images/ResVote/gender_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="Gender Grouped Bar Chart" style="width:150px; height:auto;"></th>
+<th align="center"><img src="/images/ResVote/region_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="Region Grouped Bar Chart" style="width:150px; height:auto;"></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -457,8 +457,8 @@ and then starts 4 replicas and 1 client. Each replica instantiates a key-value s
 <table>
 <thead>
 <tr>
-<th align="center"><img src="./images/race_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="Race Grouped Bar Chart" style="width:150px; height:auto;"></th>
-<th align="center"><img src="./images/education_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="Education Grouped Bar Chart" style="width:150px; height:auto;"></th>
+<th align="center"><img src="/images/ResVote/race_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="Race Grouped Bar Chart" style="width:150px; height:auto;"></th>
+<th align="center"><img src="/images/ResVote/education_grouped_bar_chart.png" srcset="/img/loading.gif" lazyload alt="Education Grouped Bar Chart" style="width:150px; height:auto;"></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -472,7 +472,7 @@ and then starts 4 replicas and 1 client. Each replica instantiates a key-value s
 
 <ul>
 <li><strong>Trend Analysis</strong>: The visualizations show trends in voting over time, helping administrators understand voter participation patterns.
-<img src="./images/time_series.png" srcset="/img/loading.gif" lazyload alt="Time Series Analysis"></li>
+<img src="/images/ResVote/time_series.png" srcset="/img/loading.gif" lazyload alt="Time Series Analysis"></li>
 </ul>
 <p>These visualizations not only enhance the transparency of the voting process but also make it easier to interpret the results and track the progress of elections.</p>
 <p>By combining these two powerful features—automated voting simulations and real-time, interactive data visualizations—<strong>Resilient Vote</strong> provides a robust platform for conducting scalable, transparent, and efficient elections.</p>
