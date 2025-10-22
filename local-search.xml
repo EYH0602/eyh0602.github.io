@@ -642,8 +642,6 @@
       
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
-      
       <tag>math</tag>
       
       <tag>algebra</tag>
@@ -653,6 +651,8 @@
       <tag>programming</tag>
       
       <tag>functional</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>logic</tag>
       
@@ -681,8 +681,6 @@
       
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
-      
       <tag>math</tag>
       
       <tag>algebra</tag>
@@ -692,6 +690,8 @@
       <tag>programming</tag>
       
       <tag>functional</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>logic</tag>
       
@@ -720,8 +720,6 @@
       
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
-      
       <tag>math</tag>
       
       <tag>algebra</tag>
@@ -731,6 +729,8 @@
       <tag>programming</tag>
       
       <tag>functional</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>logic</tag>
       
@@ -759,8 +759,6 @@
       
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
-      
       <tag>math</tag>
       
       <tag>algebra</tag>
@@ -770,6 +768,8 @@
       <tag>programming</tag>
       
       <tag>functional</tag>
+      
+      <tag>HackerHub</tag>
       
       <tag>logic</tag>
       
@@ -798,8 +798,6 @@
       
       <tag>Note</tag>
       
-      <tag>HackerHub</tag>
-      
       <tag>math</tag>
       
       <tag>algebra</tag>
@@ -809,6 +807,8 @@
       <tag>programming</tag>
       
       <tag>functional</tag>
+      
+      <tag>HackerHub</tag>
       
     </tags>
     
@@ -893,9 +893,9 @@
       
       <tag>Note</tag>
       
-      <tag>assembly</tag>
-      
       <tag>HackerHub</tag>
+      
+      <tag>assembly</tag>
       
     </tags>
     
@@ -920,9 +920,9 @@
     
     <tags>
       
-      <tag>HackerHub</tag>
-      
       <tag>programming</tag>
+      
+      <tag>HackerHub</tag>
       
     </tags>
     
