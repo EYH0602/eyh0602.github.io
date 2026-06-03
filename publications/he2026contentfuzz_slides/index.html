@@ -1,260 +1,4 @@
-
-
-<!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/null">
-  <link rel="icon" href="/images/favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="writing about interesting things.">
-  <meta name="author" content="Yifeng He">
-  <meta name="keywords" content="">
-  <meta name="description" content="ContentFuzz — Escaping Information Cocoons          window.MathJax &#x3D; {     tex: { inlineMath: [[&#39;\\(&#39;, &#39;\\)&#39;], [&#39;$&#39;, &#39;$&#39;]] },     svg: { fontCache: &#39;global&#39; }   };      &#x2F;* &#x3D;&#x3D;&#x3D; UC Davis Aggie Theme">
-<meta property="og:type" content="website">
-<meta property="og:title" content="page.title">
-<meta property="og:url" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/index.html">
-<meta property="og:site_name" content="EYH Site">
-<meta property="og:description" content="ContentFuzz — Escaping Information Cocoons          window.MathJax &#x3D; {     tex: { inlineMath: [[&#39;\\(&#39;, &#39;\\)&#39;], [&#39;$&#39;, &#39;$&#39;]] },     svg: { fontCache: &#39;global&#39; }   };      &#x2F;* &#x3D;&#x3D;&#x3D; UC Davis Aggie Theme">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/logos/cs_logo.png">
-<meta property="og:image" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/logos/ALC2026_logo_11487c_v5.png">
-<meta property="og:image" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/fig/stance_isolation_graphic.svg">
-<meta property="og:image" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/fig/control_asymmetry_scale.svg">
-<meta property="og:image" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/fig/objective_two_readers.svg">
-<meta property="og:image" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/fig/contentfuzz.png">
-<meta property="og:image" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/fig/bertscore_vs_iter.png">
-<meta property="og:image" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/fig/cross_model.png">
-<meta property="og:image" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/qr_arxiv.svg">
-<meta property="og:image" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/qr_github.svg">
-<meta property="article:published_time" content="2026-06-03T05:48:00.264Z">
-<meta property="article:modified_time" content="2026-06-03T05:48:00.175Z">
-<meta property="article:author" content="Yifeng He">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://eyh0602.github.io/publications/he2026contentfuzz_slides/logos/cs_logo.png">
-  
-  <title>page.title - EYH Site</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/tomorrow-night-eighties.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"eyh0602.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
-
-
-<body>
-  <header style="height: 60vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Yifeng&#39;s Site</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                Home
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                Archives
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                Categories
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                Tags
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                About
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="iconfont icon-link-fill"></i>
-                Links
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                
-                  
-                  
-                  
-                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://canvas.ucdavis.edu/">
-                    
-                    UC Davis Canvas
-                  </a>
-                
-                  
-                  
-                  
-                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://catalog.ucdavis.edu/departments-programs-degrees/mathematics/applied-mathematics-bs/#informationtext">
-                    
-                    UC Davis Applied Math
-                  </a>
-                
-                  
-                  
-                  
-                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://catalog.ucdavis.edu/departments-programs-degrees/computer-science-engineering/computer-science-bs/">
-                    
-                    UC Davis Computer Science
-                  </a>
-                
-              </div>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/images/evening.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="page.title">
-              
-            </span>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<article class="page-content">
-  <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -572,7 +316,7 @@
 </style>
 </head>
 <body>
-<img class="cs-logo" src="logos/cs_logo.png" srcset="/img/loading.gif" lazyload alt="UC Davis CS" />
+<img class="cs-logo" src="logos/cs_logo.png" alt="UC Davis CS" />
 
 <div class="reveal"><div class="slides">
 
@@ -584,7 +328,7 @@
     <div class="authors">
       <span style="font-size:1.15em;"><strong>Yifeng He</strong> &nbsp;·&nbsp; Ziye Tang &nbsp;·&nbsp; Hao Chen</span>
     </div>
-    <img src="logos/ALC2026_logo_11487c_v5.png" srcset="/img/loading.gif" lazyload alt="ACL 2026"
+    <img src="logos/ALC2026_logo_11487c_v5.png" alt="ACL 2026"
          style="display:block; margin:28px auto 0 auto; height:90px;" />
   </div>
 </section>
@@ -592,7 +336,7 @@
 <!-- SLIDE 2 — THE PROBLEM -->
 <section>
   <div style="text-align:center; margin-bottom:18px;">
-    <img src="fig/stance_isolation_graphic.svg" srcset="/img/loading.gif" lazyload
+    <img src="fig/stance_isolation_graphic.svg"
          alt="Stance classifier routing posts into affinity cocoons"
          style="display:block; margin:0 auto; width:92%; max-height:430px;" />
   </div>
@@ -622,7 +366,7 @@
     </div>
   </div>
   <div style="text-align:center; margin-top:10px;">
-    <img src="fig/control_asymmetry_scale.svg" srcset="/img/loading.gif" lazyload
+    <img src="fig/control_asymmetry_scale.svg"
          alt="Asymmetric balance scale: platform-heavy, creator-empty, with the post as the creator's lever"
          style="display:block; margin:0 auto; width:78%; max-height:300px;" />
   </div>
@@ -635,7 +379,7 @@
 <section>
   <h2>The objective: meaning-preserving stance flips</h2>
   <div style="text-align:center; margin-bottom:12px;">
-    <img src="fig/objective_two_readers.svg" srcset="/img/loading.gif" lazyload
+    <img src="fig/objective_two_readers.svg"
          alt="Same rewritten post seen by a human (same claim) and by a stance classifier (Against to Favor flip)"
          style="display:block; margin:0 auto; width:88%; max-height:380px;" />
   </div>
@@ -653,7 +397,7 @@
 <section>
   <h2>The ContentFuzz architectural loop</h2>
   <div style="text-align:center; margin-bottom:12px;">
-    <img src="fig/contentfuzz.png" srcset="/img/loading.gif" lazyload alt="ContentFuzz architecture"
+    <img src="fig/contentfuzz.png" alt="ContentFuzz architecture"
          style="display:block; margin:0 auto; width:92%; max-height:420px; background:white; padding:6px;" />
   </div>
   <div class="grid cols-3">
@@ -729,7 +473,7 @@
 <section>
   <h2>Deeper search does not buy escapes with semantic drift</h2>
   <div style="text-align:center; margin-bottom:12px;">
-    <img src="fig/bertscore_vs_iter.png" srcset="/img/loading.gif" lazyload alt="BERTScore vs iteration"
+    <img src="fig/bertscore_vs_iter.png" alt="BERTScore vs iteration"
          style="display:block; margin:0 auto; width:78%; max-height:420px; background:white; padding:6px;" />
   </div>
   <div class="grid cols-2">
@@ -817,7 +561,7 @@
   <h2>The vulnerability is systemic, not isolated</h2>
   <div class="grid cols-2" style="grid-template-columns: 1.3fr 1fr;">
     <div style="text-align:center;">
-      <img src="fig/cross_model.png" srcset="/img/loading.gif" lazyload alt="Cross-model transferability heatmap"
+      <img src="fig/cross_model.png" alt="Cross-model transferability heatmap"
            style="max-width:100%; max-height:430px; background:white; padding:6px;" />
       <p class="small" style="margin-top:6px;">Rows: source analyzer used during fuzzing &nbsp;·&nbsp; Columns: target analyzer at evaluation.</p>
     </div>
@@ -853,14 +597,14 @@
   </div>
   <div class="grid cols-2" style="margin-top:16px; grid-template-columns: 1fr 1fr;">
     <div class="panel" style="display:flex; align-items:center; gap:14px;">
-      <img src="qr_arxiv.svg" srcset="/img/loading.gif" lazyload alt="arXiv QR" style="width:120px; height:120px; background:white; padding:6px; flex-shrink:0;" />
+      <img src="qr_arxiv.svg" alt="arXiv QR" style="width:120px; height:120px; background:white; padding:6px; flex-shrink:0;" />
       <div>
         <h3 class="block" style="margin:0 0 4px 0;">Paper</h3>
         <p style="margin:0;"><code>arxiv.org/abs/2604.05461</code></p>
       </div>
     </div>
     <div class="panel" style="display:flex; align-items:center; gap:14px;">
-      <img src="qr_github.svg" srcset="/img/loading.gif" lazyload alt="GitHub QR" style="width:120px; height:120px; background:white; padding:6px; flex-shrink:0;" />
+      <img src="qr_github.svg" alt="GitHub QR" style="width:120px; height:120px; background:white; padding:6px; flex-shrink:0;" />
       <div>
         <h3 class="block" style="margin:0 0 4px 0;">Code</h3>
         <p style="margin:0;"><code>github.com/EYH0602/ContentFuzz</code></p>
@@ -887,149 +631,5 @@
     maxScale: 2.0,
   });
 </script>
-</body>
-</html>
-
-
-  
-</article>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
-  
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
-  
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
 </body>
 </html>
