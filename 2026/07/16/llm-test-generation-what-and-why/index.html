@@ -1,0 +1,646 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="writing about interesting things.">
+  <meta name="author" content="Yifeng He">
+  <meta name="keywords" content="">
+  <meta name="description" content="What (and why) do we care about on LLM-based test generationTL;DR: AI-based testing should target the bugs traditional testing cannot find — not the ones it already catches, more cheaply. For years I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What (and Why) do we care about on LLM-based test generation">
+<meta property="og:url" content="https://eyh0602.github.io/2026/07/16/llm-test-generation-what-and-why/index.html">
+<meta property="og:site_name" content="EYH Site">
+<meta property="og:description" content="What (and why) do we care about on LLM-based test generationTL;DR: AI-based testing should target the bugs traditional testing cannot find — not the ones it already catches, more cheaply. For years I">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://eyh0602.github.io/images/sqlite_silent_bug.png">
+<meta property="og:image" content="https://eyh0602.github.io/images/disjoint_testing.png">
+<meta property="article:published_time" content="2026-07-16T20:37:00.000Z">
+<meta property="article:modified_time" content="2026-07-17T07:51:50.509Z">
+<meta property="article:author" content="Yifeng He">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="software testing">
+<meta property="article:tag" content="test generation">
+<meta property="article:tag" content="fuzzing">
+<meta property="article:tag" content="program analysis">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://eyh0602.github.io/images/sqlite_silent_bug.png">
+  
+  <title>What (and Why) do we care about on LLM-based test generation - EYH Site</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"eyh0602.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Yifeng&#39;s Site</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://canvas.ucdavis.edu/">
+                    
+                    UC Davis Canvas
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://catalog.ucdavis.edu/departments-programs-degrees/mathematics/applied-mathematics-bs/#informationtext">
+                    
+                    UC Davis Applied Math
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://catalog.ucdavis.edu/departments-programs-degrees/computer-science-engineering/computer-science-bs/">
+                    
+                    UC Davis Computer Science
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/images/cows_in_davis.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="What (and Why) do we care about on LLM-based test generation">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Yifeng He
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2026-07-16 13:37" pubdate>
+        July 16, 2026 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      11k words
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      35 minute
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> times
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">What (and Why) do we care about on LLM-based test generation</h1>
+            
+              <p class="note note-info">
+                
+                  Last update: July 17, 2026 am
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="What-and-why-do-we-care-about-on-LLM-based-test-generation"><a href="#What-and-why-do-we-care-about-on-LLM-based-test-generation" class="headerlink" title="What (and why) do we care about on LLM-based test generation"></a>What (and why) do we care about on LLM-based test generation</h1><p><em>TL;DR: AI-based testing should target the bugs traditional testing cannot find — not the ones it already catches, more cheaply.</em></p>
+<p>For years I pitched my own research the way everyone does: LLMs write tests faster than you can by hand, cleaner than EvoSuite, more readable than a fuzzer’s byte soup. All true. And all, I now think, beside the point.</p>
+<p>The moment it broke for me was a single expression in SQLite. The query optimizer evaluated <code>0 OR 2</code> and returned <code>2</code> — not the boolean <code>1</code> it was supposed to. Valid CPU instructions, clean memory, correct exit code, wrong answer. You could throw a thousand CPU-years of libFuzzer at that line and it would never flag it, because there is nothing for a fuzzer to trip over: no crash, no sanitizer trip, no signal at all. The bug is invisible <em>by construction</em>.</p>
+<p><img src="/images/sqlite_silent_bug.png" srcset="/img/loading.gif" lazyload alt="The SQLite optimizer evaluates `0 OR 2` as `2`. Every mechanical signal a fuzzer watches — crash, sanitizer, exit code — stays green. The bug is invisible by construction."></p>
+<p>If a bug like that exists — and entire classes of them do — then the productivity pitch is the wrong pitch. Convenience is a crowded axis where the competition is nearly free. The argument worth making is a <strong>capability</strong> argument: there is a class of bug that no traditional method can reach, not by weakness but by category, and catching it requires inferring <em>intent</em> from natural language. That is exactly, and only, what LLMs are for.</p>
+<p>I have been circling this one claim for three years, since the start of my PhD in automated software testing with AI. (My <a target="_blank" rel="noopener" href="https://yfhe.net/about/">interests</a> have since drifted wider, toward AI agents in general, but I still work this direction.) Each of my papers is one more attempt to make the claim true. This post is that claim, stated as plainly as I can.</p>
+<h2 id="The-claim"><a href="#The-claim" class="headerlink" title="The claim"></a>The claim</h2><p>Here it is, up front, in one sentence:</p>
+<blockquote>
+<p><strong>Generative AI is <em>necessary</em>, not merely convenient, for software testing — because there is a class of bug, i.e. functional and logical bugs,
+that emits no mechanical signal (no crash, no sanitizer trip) and is therefore invisible to traditional testing (fuzzing, differential testing, …) by construction. 
+Catching it requires inferring <em>intent</em> from semantics (natural language or code), which is exactly what LLMs are for.</strong></p>
+</blockquote>
+<p>Two other beliefs bracket it — the premise and the corollary, not the point:</p>
+<ul>
+<li><em>Premise:</em> a generated test is only worth anything if it encodes what the code was supposed to do and can fail when the code does something else. Compiling, running, covering lines, passing — all necessary, none of them the goal.</li>
+<li><em>Corollary — the <strong>definition-by-absence trap</strong>:</em> automated bug detection presupposes a definition of the bug you are hunting — you cannot mechanically find what you cannot state. The field still defines functional bugs by absence (“no crash,” “silent,” “machine un-auditable”), so the LLM is a stopgap oracle standing in for a specification we have not yet learned to write down.</li>
+</ul>
+<p>The rest of this post is why I believe it.</p>
+<h2 id="The-coverage-illusion-the-field-is-optimizing-the-wrong-number"><a href="#The-coverage-illusion-the-field-is-optimizing-the-wrong-number" class="headerlink" title="The coverage illusion: the field is optimizing the wrong number"></a>The coverage illusion: the field is optimizing the wrong number</h2><p>Most of the LLM-based testing literature is chasing what I will call the <strong>coverage illusion</strong>. A generated test that compiles, runs, covers 80% of the branches, and asserts <code>assert(ptr != NULL)</code> scores beautifully on every standard benchmark and catches nothing. Pass rate and coverage are table stakes that we have mistaken for the finish line.</p>
+<p>You can watch the illusion take hold in three acts. The neural-testing task started as fill-in-the-blank — <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2002.05800">ATLAS (ICSE 2020)</a> predicting a single deleted assert, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2302.10166">TeCo (ICSE 2023)</a> autocompleting the next test statement — the human owning the scaffolding, the model filling a hole. Then came whole-test generation and a wave of coverage-chasers — <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2302.06527">TestPilot (TSE 2024)</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2305.04764">ChatUniTest (FSE Companion 2024)</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2403.16218">CoverUp (FSE 2025)</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2408.11324">HITS (ASE 2024)</a> — nearly all headlining one number: <em>we beat EvoSuite on coverage</em>. The benchmarks ossified around the same metrics: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2406.04531">TestEval (NAACL 2025)</a> reports pass@k, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2406.12952">SWT-Bench (NeurIPS 2024)</a> pass rate and coverage. None of them ask the question that actually matters: can the generated tests detect a fault?</p>
+<p>The tell is that industry has already quietly seen through the illusion. Meta’s <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2402.09171">TestGen-LLM (FSE 2024)</a> only keeps a test that reliably passes and strictly increases coverage — and its successor <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2501.12862">ACH (FSE 2025)</a> drops coverage entirely, keeping only tests that <em>kill targeted mutants</em>. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2503.09002">KNighter (SOSP 2025)</a> had an LLM synthesize static-analysis checkers and turned up 92 long-latent Linux-kernel bugs and 30 CVEs. The pivot is unmistakable: <em>find a real bug, don’t produce a passing test.</em></p>
+<p>The academic benchmarks are starting to follow. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2410.00752">TestGenEval (ICLR 2025)</a> is the first at scale to report <strong>mutation score</strong> alongside coverage, and the numbers are damning: GPT-4o hits 35.2% coverage and 18.8% mutation score. Read those together — the tests run through a third of the code and catch fewer than a fifth of deliberately planted faults. The vast majority of generated assertions are too weak to notice even a simple code change. And mutation score, though far better correlated with real fault detection than coverage (<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/2635868.2635929">Just et al., FSE 2014</a>), is still a proxy: mutants are mechanical perturbations, while the bugs we care about are semantic — a wrong algorithm, a misunderstood spec, a silently incorrect optimization like SQLite’s <code>0 OR 2 → 2</code>. The field still lacks a benchmark that directly measures whether a generated suite can uncover real, historical, functional bugs in the wild.</p>
+<p>The goal of testing, from the start and beyond, is to ensure <em>the code does what it is supposed to do</em>. A test that passes and covers lines but does not encode the intended behavior is a test that cannot fail when the code does something else. Everything I care about follows from that one sentence.</p>
+<h2 id="Why-no-amount-of-compute-solves-this"><a href="#Why-no-amount-of-compute-solves-this" class="headerlink" title="Why no amount of compute solves this"></a>Why no amount of compute solves this</h2><p>The whole argument turns on one word: <strong>signal</strong>. Every traditional automated testing method can only find bugs that emit a signal it can mechanically detect.</p>
+<ul>
+<li><strong>Fuzzing</strong> needs a crash, a hang, or a sanitizer trip. Its oracle is “did the process misbehave at the machine level.” And against that class of bug, a fuzzer is genuinely unbeatable: it is the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Infinite_monkey_theorem">infinite monkey theorem</a> running on silicon — one of the first fuzzers was literally Steve Capps’ 1983 <a target="_blank" rel="noopener" href="https://www.folklore.org/Monkey_Lives.html">“Monkey”</a>, feeding random events to a pre-release Macintosh until it crashed. Given enough time, the monkey finds every crash with probability 1, on one CPU core, nearly for free. That is the competitor you face if your only pitch is speed and cost. But a function that returns <code>2</code> when it should return <code>1</code> runs perfectly, corrupts no memory, exits zero. The monkey sprints right past it — not for a shortage of compute, but because the class is <em>defined by the absence of the signal fuzzing depends on</em>.</li>
+<li><strong>Differential testing</strong> needs a reference implementation to disagree with. Most library code has no golden twin, and where a twin exists, both copies often share the same wrong assumption. It converts the oracle problem into “go find me a second oracle,” which usually does not exist.</li>
+</ul>
+<p>Both techniques are, for functional correctness, fundamentally <strong>un-oracled</strong>. They detect deviation from a mechanical invariant; they never detect deviation from <em>intent</em>. So what can catch the SQLite bug? Something that knows the code was supposed to return a boolean — knowledge that does not live in the binary but in the documentation, the API name, the comments: natural language written by and for humans. The oracle has to be <em>inferred from intent</em>, and intent lives in exactly the medium generative models were built to read. The gap is structural, not a temporary shortfall in tooling.</p>
+<p>To be precise about the boundary — because overclaiming here is cheap and wrong — AI does not replace fuzzing; it covers a disjoint region. In LISA’s libpng results, OSS-Fuzz caught a use-after-free that LISA missed, while LISA caught silent logic errors OSS-Fuzz ran straight past. The two tools failing in opposite directions is the clearest picture of the split: AI is necessary for a region fuzzing <em>cannot enter</em>, not a winner everywhere.</p>
+<p><img src="/images/disjoint_testing.png" srcset="/img/loading.gif" lazyload alt="Two territories, little overlap. Fuzzers own memory-safety crashes (left); intent-oracles own silent logic errors (right). On libpng, each caught what the other missed — the split is the point, not a contest."></p>
+<p>From the signal argument, the quality bar for a generated test falls out directly. I ask three things: does it encode intent as a checkable oracle (<code>assert(ptr != NULL)</code> is a formality, not an oracle); is the oracle grounded in something real (runtime behavior, a documented contract, a reference build — never raw model output); and are we measuring accuracy and completeness of the oracles rather than a single pass-rate number that hides emptiness.</p>
+<h2 id="Three-realizations-that-forced-the-answer"><a href="#Three-realizations-that-forced-the-answer" class="headerlink" title="Three realizations that forced the answer"></a>Three realizations that forced the answer</h2><p>I did not start with the claim above; I backed into it, one realization at a time. Each of my papers is the residue of one.</p>
+<p><strong>Realization one: a model cannot assert what it cannot attach.</strong> Models trained on undifferentiated code see tests and functions as unrelated token streams — they have no notion that this assertion is <em>about</em> that function. Knowing what you are asserting on is the prerequisite for an oracle. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2402.03396">UniTSyn (ISSTA 2024)</a> fixed the training signal: 2.7M tests correctly paired with their focal functions across five languages, mined language-agnostically through the Language Server Protocol.</p>
+<p><strong>Realization two: meaning without diversity is not enough.</strong> Correctly-paired tests taught the model what intent attaches to, but human-written tests exercise a handful of tidy inputs. Fuzzing inputs are endlessly diverse but carry no oracle at all. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2406.08665">FuzzAug (EMNLP 2025)</a> did the deliberately ironic thing: take fuzzing, the canonical <em>no-oracle</em> technique, strip its weakness (meaningless inputs), keep its strength (diverse behavior), and fuse it onto the human-written oracle. That was the first time I framed dynamic analysis as being <em>in service of</em> intent rather than a replacement for it.</p>
+<p><strong>Realization three: a silent bug is two problems wearing one coat.</strong> Even a meaningful test on diverse inputs is useless if nothing tells you the output is wrong — and silent functional bugs never do. <a href="">LISA (ISSRE 2026)</a> is the frontal assault: it <strong>decouples</strong> exploration from oracle construction, because <em>reaching</em> the deep stateful place where a bug lives and <em>knowing</em> what the answer should have been once you arrive are different problems, and the reason monolithic tools emit <code>assert(ptr != NULL)</code> is that they ask one pass to do both. Split apart, the intent-oracle does its job: documentation-grounded invariants, verified against a reference build, catch 48% of real historical functional bugs where crash-oriented OSS-Fuzz manages 8% — exactly the gap the signal argument predicts. LISA emits high-confidence bug <em>candidates</em> for a developer to confirm, because it validates its invariants against documentation rather than proving them. It mitigates the oracle problem; it does not solve it.</p>
+<p>Read in order, the three are not three tools. They are one claim assembled backward from its symptoms: fix the data, then the diversity, then the oracle — and what falls out is <em>manufacture intent-based oracles, at scale, grounded in program analysis.</em> The gap LISA only mitigates is the last section.</p>
+<h2 id="The-definition-we’re-missing"><a href="#The-definition-we’re-missing" class="headerlink" title="The definition we’re missing"></a>The definition we’re missing</h2><p>Here is the part I have become most opinionated about, and it is the uncomfortable one.</p>
+<p>We do not have a definition of what a functional or logical bug <em>is</em>. We define it by absence — no crash, no sanitizer signal, “silent,” “machine un-auditable.” That is the definition-by-absence trap, and a definition by negation is a research dead end. You cannot measure recall against a class you cannot characterize. You cannot prove a detector complete over a class you can only point at. Every detector we build, mine included, is reduced to inferring intent probabilistically and hoping.</p>
+<p>The real work ahead is an <strong>operational, positive definition of what logical and functional bugs look like.</strong> A functional bug is a divergence between a program’s semantics and its specification. For crashes the specification is implicit and universal — do not corrupt memory, do not hang — which is exactly why it is mechanically checkable. For functional bugs the specification is program-specific and almost always unwritten. So an operational definition really means a principled theory of <em>where the specification lives and what form it takes</em>: documented contracts, algebraic and metamorphic relations, refinement types, the previous version as the spec for a regression.</p>
+<p>This reframes why the LLM is necessary in a way I find clarifying. <strong>The LLM is necessary today precisely because the definition is missing.</strong> In its absence we outsource intent-inference to a model trained on human intent. But that should be a stopgap and a discovery tool, not the destination. The genuinely interesting possibility is that the model helps us <em>find</em> the definition: surface candidate contracts and invariants at scale, which we then filter, formalize, and turn into something a machine can check soundly. LISA gestures at this by reconciling Daikon’s mined candidates against documentation. <a target="_blank" rel="noopener" href="https://haochen.org/publications/lin2026specauditor.pdf">SpecAuditor (S&amp;P 2026)</a> is the strongest existence-proof I have seen: it mines an <code>Entity–Constraint</code> specification from each historical patch — the previous version as the spec — validates it differentially, generalizes it to code that shares the behavior but not the syntax, and found 71 long-latent kernel bugs. That is the field beginning to write down the specification instead of asking a model to re-guess it every time.</p>
+<p>The north star is not a perpetually better guesser. It is a characterization of the bug class precise enough that we can quantify over it. Until we have that, every functional bug we catch, we catch by feel — and I would like the field to stop calling that a method.</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/research/">research</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/LLM/">LLM</a>
+                    
+                      <a class="hover-with-bg" href="/tags/software-testing/">software testing</a>
+                    
+                      <a class="hover-with-bg" href="/tags/test-generation/">test generation</a>
+                    
+                      <a class="hover-with-bg" href="/tags/fuzzing/">fuzzing</a>
+                    
+                      <a class="hover-with-bg" href="/tags/program-analysis/">program analysis</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    All blog follow <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow noopener noopener">CC BY-SA 4.0 licenses</a>, please cite the creator when reprinting.
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/02/24/tfbench-philosophy-of-llm-reasoning/">
+                        <span class="hidden-mobile">The Reasoning Gap</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'photon-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'EYH0602/blog');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
